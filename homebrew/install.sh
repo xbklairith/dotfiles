@@ -21,4 +21,7 @@ then
 
 fi
 
+echo "Installing apps via Homebrew"
+brew bundle || echo "Reinstalling those packages afterward."
+
 exit 0
