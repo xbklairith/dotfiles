@@ -66,7 +66,7 @@ battery_status() {
   fi
 }
 
-export PROMPT=$'\n$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
 # set_prompt () {
 #   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 # }
@@ -76,7 +76,8 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 RPROMPT='${return_code}'
 
 precmd() {
-#   title "zsh" "%m" "%55<...<%~"
+  title "zsh" "%m" "%55<...<%~"
+  # title "test" "1234" "1234"
 #   echo test
 #   set_prompt
 }

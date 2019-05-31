@@ -1,4 +1,4 @@
-#compdef git-rm
+compdef git-rm
 _arguments -S -A '-*' \
   '-f[override the up-to-date check]' \
   "-n[don't actually remove the files, just show if they exist in the index]" \
