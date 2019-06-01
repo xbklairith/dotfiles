@@ -3,7 +3,7 @@
 # Run all dotfiles installers.
 
 set -e
-
+export DOTFILES_ROOT=$(pwd -P)
 cd "$(dirname $0)"/..
 
 # find the installers and run them iteratively
