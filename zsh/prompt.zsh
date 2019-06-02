@@ -75,9 +75,8 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 RPROMPT='${return_code}'
 
+
+# set title iterm
 precmd() {
-  title "zsh" "%m" "%55<...<%~"
-  # title "test" "1234" "1234"
-#   echo test
-#   set_prompt
+  echo -ne "\e]1;${PWD##*/}\a"
 }
