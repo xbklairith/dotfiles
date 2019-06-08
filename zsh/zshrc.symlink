@@ -10,7 +10,8 @@ zmodload zsh/zprof
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/work
-
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
