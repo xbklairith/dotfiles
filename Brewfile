@@ -5,6 +5,7 @@ tap 'caskroom/versions'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 
+brew 'ack'
 brew 'git'
 brew 'httpie'
 brew 'libcouchbase'
