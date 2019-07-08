@@ -46,7 +46,7 @@ cask 'sourcetree'
 cask 'sublime-text'
 cask 'the-unarchiver'
 cask 'visual-studio-code'
-
+cask 'dbeaver-community'
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 cask 'qlcolorcode'
 cask 'qlstephen'
