@@ -45,3 +45,4 @@ code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension vscoss.vscode-ansible
 code --install-extension wholroyd.jinja
 code --install-extension msjsdiag.debugger-for-chrome 
+code --install-extension humao.rest-client
