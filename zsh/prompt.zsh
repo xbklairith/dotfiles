@@ -66,7 +66,8 @@ battery_status() {
   fi
 }
 
-export PROMPT=$'$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
+# export PROMPT=$'$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$"(need_push) > "
 # set_prompt () {
 #   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 # }
