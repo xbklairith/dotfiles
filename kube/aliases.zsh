@@ -14,6 +14,7 @@ alias kgetpo="k get po $*"
 alias kgp="k get po $*"
 alias kdelpo="k delete po $*"
 alias kdp="k delete po $*"
+alias klo="k logs $*"
 
 alias kscale0="kubectl get statefulsets -o name | xargs -I % kubectl scale % --replicas=0  && kubectl get deployments -o name | xargs -I % kubectl scale % --replicas=0"
 alias kscale1="kubectl get statefulsets -o name | xargs -I % kubectl scale % --replicas=1  && kubectl get deployments -o name | xargs -I % kubectl scale % --replicas=1"
