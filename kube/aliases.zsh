@@ -19,3 +19,7 @@ alias klo="k logs $*"
 alias kscale0="kubectl get statefulsets -o name | xargs -I % kubectl scale % --replicas=0  && kubectl get deployments -o name | xargs -I % kubectl scale % --replicas=0"
 alias kscale1="kubectl get statefulsets -o name | xargs -I % kubectl scale % --replicas=1  && kubectl get deployments -o name | xargs -I % kubectl scale % --replicas=1"
 alias knuke='kn | grep pdm | while read namespace; do kn "$namespace" && kscale0 ; done' 
+
+function kgetenv(){
+    k exec -c gaia-api -t $@ -- bash -c "env" 
+}
