@@ -120,6 +120,8 @@ link_file () {
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
+    target_dir=$(dirname $2) 
+    [ -d $target_dir ] || mkdir -p $target_dir
     ln -s "$1" "$2"
     success "linked $1 to $2"
   fi
@@ -137,10 +139,26 @@ install_dotfiles () {
   done
 }
 
+install_config_file () {
+  info 'installing .config from dotfile'
+  local overwrite_all=false backup_all=false skip_all=false
+  
+  for src in $(find -H "$DOTFILES_ROOT/.config" -type f -maxdepth 2 -name '*.*' -not -path '*.git*')
+  do
+    config_path="$DOTFILES_ROOT/.config/"
+    dest_rel_path=${src//$config_path/}
+    dst="$HOME/.config/$dest_rel_path"
+    info $dir_name
+    info "Link config file $src -> $dst"
+    link_file "$src" "$dst"
+  done
+}
+
 # setup_gitconfig
 install_dotfiles
-
+install_config_file
 # If we're on a Mac, let's install and setup homebrew.
+
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"

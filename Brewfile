@@ -22,6 +22,7 @@ brew 'tree'
 brew 'unar'
 brew 'wget'
 brew 'zsh'
+brew 'fzf'
 
 cask 'alfred'
 cask 'caffeine'
