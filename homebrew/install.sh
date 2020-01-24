@@ -22,6 +22,7 @@ then
 fi
 
 echo "Installing apps via Homebrew"
+cd $DOTFILES_ROOT
 brew bundle || echo "Reinstalling those packages afterward."
 
 exit 0

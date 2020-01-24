@@ -3,7 +3,7 @@
 # bootstrap installs things.
 
 cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_ROOT=$HOME/.dotfiles;
 
 set -e
 
@@ -162,7 +162,7 @@ install_config_file
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
+  if source bin/dot-files | while read -r data; do info "$data"; done
   then
     success "dependencies installed"
   else
