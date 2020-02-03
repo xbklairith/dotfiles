@@ -57,6 +57,6 @@ cask 'suspicious-package'
 cask 'the-unarchiver'
 cask 'visual-studio-code'
 cask 'webpquicklook'
-
+cask 'scroll-reverser'
 
 # cask 'docker-toolbox'
