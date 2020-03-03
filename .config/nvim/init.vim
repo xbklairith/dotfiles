@@ -12,7 +12,7 @@ Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'junegunn/goyo.vim'                                " zen mode
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 Plug 'dracula/vim'
-
+Plug 'Yggdroot/indentLine'                              " Show indent line
 " ================= Functionalities ================= "
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,11 +24,12 @@ Plug 'tpope/vim-fugitive'
 " syntax check
 Plug 'w0rp/ale'
 " Autocomplete
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-jedi'
   " Formater
 Plug 'Chiel92/vim-autoformat'
 
@@ -55,10 +56,13 @@ au BufEnter * set fo-=c fo-=r fo-=o                     " stop annying auto comm
 set undofile                                            " enable persistent undo
 set undodir=~/.nvim/tmp                                 " undo temp file directory
 set nofoldenable                                        " disable folding
+set cursorline
+
 
 set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
+set autoread                                            " Reload file when change detected
 
 " performance tweaks
 set nocursorline
@@ -139,26 +143,26 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 
-augroup NCM2
-  autocmd!
-  " enable ncm2 for all buffers
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-  " :help Ncm2PopupOpen for more information
-  set completeopt=noinsert,menuone,noselect
-  " When the <Enter> key is pressed while the popup menu is visible, it only
-  " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-  " uncomment this block if you use vimtex for LaTex
-  " autocmd Filetype tex call ncm2#register_source({
-  "           \ 'name': 'vimtex',
-  "           \ 'priority': 8,
-  "           \ 'scope': ['tex'],
-  "           \ 'mark': 'tex',
-  "           \ 'word_pattern': '\w+',
-  "           \ 'complete_pattern': g:vimtex#re#ncm2,
-  "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-  "           \ })
-augroup END
+" augroup NCM2
+"   autocmd!
+"   " enable ncm2 for all buffers
+"   " autocmd BufEnter * call ncm2#enable_for_buffer()
+"   " :help Ncm2PopupOpen for more information
+"   set completeopt=noinsert,menuone,noselect
+"   " When the <Enter> key is pressed while the popup menu is visible, it only
+"   " hides the menu. Use this mapping to close the menu and also start a new line.
+"   inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"   " uncomment this block if you use vimtex for LaTex
+"   " autocmd Filetype tex call ncm2#register_source({
+"   "           \ 'name': 'vimtex',
+"   "           \ 'priority': 8,
+"   "           \ 'scope': ['tex'],
+"   "           \ 'mark': 'tex',
+"   "           \ 'word_pattern': '\w+',
+"   "           \ 'complete_pattern': g:vimtex#re#ncm2,
+"   "           \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+"   "           \ })
+" augroup END
 
 
 " Ale
@@ -238,6 +242,8 @@ let g:rainbow_active = 1
 let g:tagbar_autofocus = 1
 
 
+" ======================== Indent ============================== "
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " ======================== Custom function ======================"
 " tabs manipulation
