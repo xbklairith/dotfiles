@@ -209,7 +209,7 @@
                         ]
                     },
                     {
-                        "description": "(XBIRD) Hyper Application",
+                        "description": "XB Hyper Application",
                         "manipulators": [
                             {
                                 "from": {
@@ -381,27 +381,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b com.runningwithcrayons.Alfred-3"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command",
-                                            "right_command",
-                                            "right_control",
-                                            "right_shift",
-                                            "right_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Dash'"
+                                        "shell_command": "open -b com.postmanlabs.mac"
                                     }
                                 ],
                                 "type": "basic"
@@ -421,6 +401,44 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Google Chrome'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift",
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b com.tinyspeck.slackmacgap"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift",
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -b jp.naver.line.mac"
                                     }
                                 ],
                                 "type": "basic"
@@ -482,6 +500,44 @@
                     "manipulate_caps_lock_led": false,
                     "right_command_function_keys": [],
                     "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 24647,
+                        "vendor_id": 6127
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": {
+                                "key_code": "left_command"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_gui"
+                            },
+                            "to": {
+                                "key_code": "left_option"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "right_command"
+                            }
+                        }
+                    ]
                 }
             ],
             "fn_function_keys": [

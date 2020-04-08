@@ -61,3 +61,4 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 unsetopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(rbenv init -)"
