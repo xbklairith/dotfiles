@@ -33,6 +33,9 @@ Plug 'w0rp/ale'
   " Formater
 Plug 'Chiel92/vim-autoformat'
 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+
 call plug#end()
 
 " ==================== general config ======================== "
@@ -374,3 +377,7 @@ map <S-Enter> O<ESC>
 
 " for project wide search
 map <leader>/ :Ag<CR>
+
+
+" Clear search highlight
+nmap <esc><esc> :noh<return>

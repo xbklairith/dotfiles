@@ -13,6 +13,14 @@ export PROJECTS=~/work
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+#SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk 
+#MACOSX_DEPLOYMENT_TARGET=10.14
+#export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" 
+#export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib"
+
+
+
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
