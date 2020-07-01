@@ -69,7 +69,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 unsetopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(rbenv init -)"
+
 
 # Created by `userpath` on 2020-05-10 06:49:57
 export PATH="$PATH:/Users/praphan.k/.local/bin"

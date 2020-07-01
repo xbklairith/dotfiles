@@ -1,0 +1,4 @@
+#!/bin/sh
+autoflake -r --ignore-init-module-imports --remove-all-unused-imports --in-place $@
+isort $@
+black $@
