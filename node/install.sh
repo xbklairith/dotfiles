@@ -1,3 +1,10 @@
+
+if test ! "$(uname)" = "Darwin"
+  then
+  printf ""
+  exit 0
+fi
+
 echo "Installing NPM"
 
 # if ! is-executable brew -o ! is-executable git; then
