@@ -1,7 +1,18 @@
 
 
-eval "$(rbenv init -)"
 
-eval "$(pyenv init -)"
+
+
+if ! command -v rbenv &> /dev/null
+then
+    eval "$(rbenv init -)"
+fi
+
+
+if ! command -v pyenv &> /dev/null
+then
+    eval "$(pyenv init -)"
+fi
+
 
 export EDITOR='code --wait'
