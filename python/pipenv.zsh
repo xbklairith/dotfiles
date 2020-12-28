@@ -23,7 +23,7 @@ _togglePipenvShell() {
     fi
   fi
 }
-chpwd_functions+=(_togglePipenvShell)
+# chpwd_functions+=(_togglePipenvShell)
 
 # Aliases
 alias pch="pipenv check"

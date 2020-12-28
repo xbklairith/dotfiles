@@ -2,27 +2,27 @@ call plug#begin('~/.vim/plugged')
 
 
 "  ================GUI AND look stuff  =============== "
-Plug 'vim-airline/vim-airline'                          " airline status bar
-Plug 'vim-airline/vim-airline-themes'                   " airline themes
-Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
-Plug 'chriskempson/base16-vim'
+" Plug 'vim-airline/vim-airline'                          " airline status bar
+" Plug 'vim-airline/vim-airline-themes'                   " airline themes
+" Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
+" Plug 'chriskempson/base16-vim'
 
-Plug 'luochen1990/rainbow'                              " rainbow paranthesis
-Plug 'hzchirs/vim-material'                             " material color themes
-Plug 'junegunn/goyo.vim'                                " zen mode
-Plug 'gregsexton/MatchTag'                              " highlight matching html tags
-Plug 'dracula/vim'
-Plug 'Yggdroot/indentLine'                              " Show indent line
+" Plug 'luochen1990/rainbow'                              " rainbow paranthesis
+" Plug 'hzchirs/vim-material'                             " material color themes
+" Plug 'junegunn/goyo.vim'                                " zen mode
+" Plug 'gregsexton/MatchTag'                              " highlight matching html tags
+" Plug 'dracula/vim'  
+" Plug 'Yggdroot/indentLine'                              " Show indent line
 " ================= Functionalities ================= "
-Plug 'mhinz/vim-startify'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'mhinz/vim-startify'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" Plug 'tpope/vim-fugitive'
 
 " syntax check
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " Autocomplete
 "Plug 'ncm2/ncm2'
 "Plug 'roxma/nvim-yarp'
@@ -31,9 +31,9 @@ Plug 'w0rp/ale'
 "Plug 'ncm2/ncm2-path'
 "Plug 'ncm2/ncm2-jedi'
   " Formater
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 
 call plug#end()
@@ -87,7 +87,7 @@ set signcolumn=yes
 
 " ==================== Color ======================== "
 syntax on
-color dracula
+" color dracula
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
@@ -104,18 +104,18 @@ highlight LineNr guibg=NONE ctermbg=NONE
 
 
 
-colorscheme vim-material
-let g:airline_theme='material'
-highlight Pmenu guibg='00010a' guifg=white              " popup menu colors
-highlight Comment gui=bold                              " bold comments
-highlight Normal gui=none
-highlight NonText guibg=none
-highlight clear SignColumn                              " use number color for sign colum color
-hi Search guibg=orange                                  " search string highlight color
-autocmd ColorScheme * highlight VertSplit cterm=NONE    " split color
-hi NonText guifg=bg                                     " mask ~ on empty lines
-hi clear CursorLineNr                                   " use the theme color for relative number
-hi CursorLineNr gui=bold                                " make relative number bold
+" colorscheme vim-material
+" let g:airline_theme='material'
+" highlight Pmenu guibg='00010a' guifg=white              " popup menu colors
+" highlight Comment gui=bold                              " bold comments
+" highlight Normal gui=none
+" highlight NonText guibg=none
+" highlight clear SignColumn                              " use number color for sign colum color
+" hi Search guibg=orange                                  " search string highlight color
+" autocmd ColorScheme * highlight VertSplit cterm=NONE    " split color
+" hi NonText guifg=bg                                     " mask ~ on empty lines
+" hi clear CursorLineNr                                   " use the theme color for relative number
+" hi CursorLineNr gui=bold                                " make relative number bold
 
 " colors for git (especially the gutter)
 hi DiffAdd guibg='#0f111a'
@@ -168,30 +168,30 @@ let g:fzf_colors =
 " augroup END
 
 
-" Ale
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {'python': ['flake8']}
+" " Ale
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_linters = {'python': ['flake8']}
 
 
 
 
-" ================= Airline ==============================="
-let g:airline_powerline_fonts = 1
-let g:airline#themes#clean#palette = 1
-call airline#parts#define_raw('linenr', '%l')
-call airline#parts#define_accent('linenr', 'bold')
-let g:airline_section_z = airline#section#create(['%3p%%  ',
-            \ g:airline_symbols.linenr .' ', 'linenr', ':%c '])
-let g:airline_section_warning = ''
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'        " show only file name on tabs
-let g:airline#extensions#ale#enabled = 1                " ALE integration
-let airline#extensions#ale#error_symbol = 'E:'
-let airline#extensions#ale#warning_symbol = 'W:'
+" " ================= Airline ==============================="
+" let g:airline_powerline_fonts = 1
+" let g:airline#themes#clean#palette = 1
+" call airline#parts#define_raw('linenr', '%l')
+" call airline#parts#define_accent('linenr', 'bold')
+" let g:airline_section_z = airline#section#create(['%3p%%  ',
+"             \ g:airline_symbols.linenr .' ', 'linenr', ':%c '])
+" let g:airline_section_warning = ''
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'        " show only file name on tabs
+" let g:airline#extensions#ale#enabled = 1                " ALE integration
+" let airline#extensions#ale#error_symbol = 'E:'
+" let airline#extensions#ale#warning_symbol = 'W:'
 
 
 
@@ -245,73 +245,73 @@ let g:rainbow_active = 1
 let g:tagbar_autofocus = 1
 
 
-" ======================== Indent ============================== "
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" " ======================== Indent ============================== "
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-" ======================== Custom function ======================"
-" tabs manipulation
-function! Rotate() " switch between horizontal and vertical split mode for open splits
-    " save the original position, jump to the first window
-    let initial = winnr()
-    exe 1 . "wincmd w"
+" " ======================== Custom function ======================"
+" " tabs manipulation
+" function! Rotate() " switch between horizontal and vertical split mode for open splits
+"     " save the original position, jump to the first window
+"     let initial = winnr()
+"     exe 1 . "wincmd w"
 
-    wincmd l
-    if winnr() != 1
-        " succeeded moving to the right window
-        wincmd J                " make it the bot window
-    else
-        " cannot move to the right, so we are at the top
-        wincmd H                " make it the left window
-    endif
+"     wincmd l
+"     if winnr() != 1
+"         " succeeded moving to the right window
+"         wincmd J                " make it the bot window
+"     else
+"         " cannot move to the right, so we are at the top
+"         wincmd H                " make it the left window
+"     endif
 
-    " restore cursor to the initial window
-    exe initial . "wincmd w"
-endfunction
+"     " restore cursor to the initial window
+"     exe initial . "wincmd w"
+" endfunction
 
-nnoremap <F5> :call Rotate()<CR>
+" nnoremap <F5> :call Rotate()<CR>
 
-"Hfile for listing hidden file"
-command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+" "Hfile for listing hidden file"
+" command! -bang -nargs=? -complete=dir HFiles
+"   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
 
-" fzf with file icons and previews
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
+" " fzf with file icons and previews
+" if executable('rg')
+"   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+"   set grepprg=rg\ --vimgrep
+"   command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+" endif
 
-" Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
+" " Files + devicons
+" function! Fzf_dev()
+"   let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+"   function! s:files()
+"     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+"     return s:prepend_icon(l:files)
+"   endfunction
 
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
+"   function! s:prepend_icon(candidates)
+"     let l:result = []
+"     for l:candidate in a:candidates
+"       let l:filename = fnamemodify(l:candidate, ':p:t')
+"       let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+"       call add(l:result, printf('%s %s', l:icon, l:candidate))
+"     endfor
 
-    return l:result
-  endfunction
+"     return l:result
+"   endfunction
 
-  function! s:edit_file(item)
-    let l:pos = stridx(a:item, ' ')
-    let l:file_path = a:item[pos+1:-1]
-    execute 'silent e' l:file_path
-  endfunction
+"   function! s:edit_file(item)
+"     let l:pos = stridx(a:item, ' ')
+"     let l:file_path = a:item[pos+1:-1]
+"     execute 'silent e' l:file_path
+"   endfunction
 
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
+"   call fzf#run({
+"         \ 'source': <sid>files(),
+"         \ 'sink':   function('s:edit_file'),
+"         \ 'options': '-m ' . l:fzf_files_options,
+"         \ 'down':    '40%' })
+" endfunction
 
 
 " ======================== Custom Mappings ====================== "

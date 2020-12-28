@@ -1,5 +1,5 @@
 alias py=python
 alias pi=pip
 alias pe=pipenv
-alias pipuninstall="pip freeze --local | xargs pip uninstall -y"
+alias pipuninstall="pip uninstall -y -r <(pip freeze)"
 
