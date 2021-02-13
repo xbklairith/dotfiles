@@ -24,6 +24,6 @@ togglePoetryShell() {
   fi
 }
 
-chpwd_functions+=(togglePoetryShell)
+# chpwd_functions+=(togglePoetryShell)
 
-togglePoetryShell
+# togglePoetryShell
