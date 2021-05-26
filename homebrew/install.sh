@@ -14,8 +14,9 @@ then
   if test "$(uname)" = "Darwin"
   then
     echo "  Installing Homebrew for you."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/bird.praphan/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     echo "Installing apps via Homebrew"
     cd $DOTFILES_ROOT
     brew bundle || echo "Reinstalling those packages afterward."
