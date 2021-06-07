@@ -12,8 +12,8 @@ function load_nvm {
   fi
 }
 
-alias node='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; node $@'
-alias npm='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; npm $@'
-alias nvm='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; nvm $@'
-alias yarn='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; yarn $@'
+alias node='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; load_nvm; node $@'
+alias npm='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; load_nvm; npm $@'
+alias nvm='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; load_nvm; nvm $@'
+alias yarn='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; load_nvm; yarn $@'
 alias npx='unalias nvm; unalias node; unalias npm; unalias yarn ; unalias npx; load_nvm; npx $@'
