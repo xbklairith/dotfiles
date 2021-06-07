@@ -16,3 +16,5 @@ function load_nvm {
 alias node='unalias nvm; unalias node; unalias npm; load_nvm; node $@'
 alias npm='unalias nvm; unalias node; unalias npm; load_nvm; npm $@'
 alias nvm='unalias nvm; unalias node; unalias npm; load_nvm; nvm $@'
+alias yarn='unalias nvm; unalias node; unalias npm; load_nvm; yarn $@'
+alias npx='unalias nvm; unalias node; unalias npm; load_nvm; npx $@'
