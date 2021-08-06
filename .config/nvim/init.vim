@@ -73,7 +73,7 @@ let airline#extensions#ale#warning_symbol = 'W:'
 "------------
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set list
+
 
 "Highlights code for multiple indents without reselecting
 vnoremap < <gv
