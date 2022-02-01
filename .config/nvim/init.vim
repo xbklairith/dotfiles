@@ -116,6 +116,10 @@ map <C-p> :FZF<CR>
 "FILE BROWSER:
 "-------------
 "allows NERDTree to open/close by typing 'n' then 't'
+
+set autochdir
+
+
 map nt :NERDTreeTabsToggle<CR>
 "Start NERDtree when dir is selected (e.g. "vim .") and start NERDTreeTabs
 let g:nerdtree_tabs_open_on_console_startup=2
@@ -130,6 +134,7 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:NERDTreeChDirMode = 2
 highlight! link NERDTreeFlags NERDTreeDir
 
 "SHORTCUTS:
