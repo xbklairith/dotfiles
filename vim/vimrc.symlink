@@ -16,3 +16,9 @@ call plug#begin()
 
 " On-demand loading
 call plug#end()
+
+
+
+if $NVM_BIN != ""
+  let g:coc_node_path = '$NVM_BIN/node'
+endif
