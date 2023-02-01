@@ -1,6 +1,4 @@
-
-if test ! "$(uname)" = "Darwin"
-  then
+if test ! "$(uname)" = "Darwin"; then
   printf ""
   exit 0
 fi

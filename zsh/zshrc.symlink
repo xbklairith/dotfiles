@@ -79,7 +79,3 @@ unsetopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
-if type "rbenv" > /dev/null; then
-    eval "$(rbenv init -)"
-fi
