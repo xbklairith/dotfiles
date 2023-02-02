@@ -3,3 +3,4 @@ alias pi=pip
 alias pe=pipenv
 alias pipuninstall="pip uninstall -y -r <(pip freeze)"
 
+alias poe=poetry
