@@ -38,6 +38,8 @@ Plug 'vim-airline/vim-airline-themes'                   " airline themes
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
+
+Plug 'github/copilot.vim'
 call plug#end()
 
 
