@@ -109,11 +109,21 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "FILE SEARCH:
+
+function! GitFZF()
+    let path = trim(system('cd '.shellescape(expand('%:p:h')).' && git rev-parse --show-toplevel'))
+    exe 'FZF ' . path
+endfunction
+command! GitFZF call GitFZF()
+
 "------------
 "allows FZF to open by pressing CTRL-F
-map <C-p> :FZF<CR>
+" map <C-p> :FZF<CR>
+map <C-p> :GitFZF<CR>
+" nnoremap <C-p> :GitFZF<CR>
+
 "allow FZF to search hidden 'dot' files
-" let $FZF_DEFAULT_COMMAND = "find -L"
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 "FILE BROWSER:
 "-------------

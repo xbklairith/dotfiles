@@ -1,5 +1,5 @@
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
+# export LSCOLORS="exfxcxdxbxegedabagacad"
+# export CLICOLOR=true
 
 fpath=($DOTFILES_ROOT/functions $fpath)
 
@@ -26,6 +26,12 @@ setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
+
+setopt INC_APPEND_HISTORY
+#save only one command if 2 common are same and consistent
+setopt HIST_IGNORE_DUPS
+
+
 
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
