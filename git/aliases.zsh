@@ -22,6 +22,7 @@ alias gcb='git checkout -b'
 alias gct='git checkout --track'
 alias gcd='git checkout develop'
 alias gcdev='git checkout dev'
+alias gcmain='git checkout main'
 alias gcm='git checkout master'
 alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
