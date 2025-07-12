@@ -15,8 +15,8 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
+	excludesfile = /Users/xb/.gitignore
+	editor = code --wait
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -40,3 +40,8 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[user]
+	name = Bird  Praphan
+	email = xbird007@gmail.com
+[commit]
+	template = /Users/xb/.stCommitMsg
