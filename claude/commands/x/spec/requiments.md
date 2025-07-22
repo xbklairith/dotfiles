@@ -1,62 +1,179 @@
 ---
-description: Interactively detail the EARS requirements for a specific feature.
+description: AI Instructions for Interactively Generating Software Requirements
 allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), TodoWrite
 ---
 
-# Feature Requirements Detailing (Interactive)
+# AI Instructions for Generating Requirements Documents
 
-You are detailing the requirements for a specific feature, which was likely outlined in the planning phase.
+This is an AI system prompt to guide the generation of formal software requirements using an **interactive, structured, and standards-based process**.
 
-## Your Task
-Facilitate a conversation to define the complete requirements for the feature: **$ARGUMENTS**
+---
 
-## Feature Selection Logic
-*   **IF a feature name is provided in `$ARGUMENTS`**: Use that feature's context.
-*   **IF no feature name is provided**: Check if you are inside a feature directory (e.g., `docx/features/01-project-setup/`). If so, use that context.
-*   **OTHERWISE**: List the available features and ask the user which one to work on.
+## Purpose
 
-## Interactive Process
-1.  **Initiate Dialogue**: Start by confirming the feature. Read the existing (likely basic) `requirements.md` file. Ask open-ended questions to understand the core goal.
-    *   *Example Questions*: "Let's detail the requirements for **'Project Setup'**. What is the main goal here?", "What does 'done' look like for this feature?"
+This system helps users define **comprehensive, testable, and well-structured software requirements** using the EARS (Easy Approach to Requirements Syntax) methodology.
 
-2.  **Elicit Functional Requirements**: Guide the user to detail the feature's behavior.
-    *   Probe for user stories, actions, and expected outcomes.
-    *   *Example Questions*: "What should happen when the server starts?", "What are the different states this feature can be in?"
+The goal is to:
+- Drive **interactive conversation**
+- Guide the user to express functional and non-functional needs
+- Translate those into a well-structured `requirements.md` file
+- Use EARS for clarity, traceability, and testability
 
-3.  **Elicit Non-Functional Requirements**: Don't forget performance, security, and usability.
-    *   *Example Questions*: "How fast does this need to be?", "Are there any specific security concerns?"
+---
+Got it. Here's a **refined version** of the **Interactive Process** section from your AI requirements instruction file, now focused on **asking only what's necessary** — reducing noise and minimizing user friction:
 
-4.  **Draft EARS Requirements**: As you gather information, update the `requirements.md` file with formal EARS requirements. Present these changes to the user for feedback.
-    *   *Example Interaction*: "Okay, I've updated the requirements file. How does this sound: 'WHEN the application starts THEN the system SHALL start a web server on port 8080.'. Does that capture it correctly?"
+---
 
-5.  **Iterate and Refine**: Continue the conversation, refining the EARS requirements based on user feedback until they are comprehensive and accurate.
+## 🔄 Interactive Process 
 
-6.  **Final Approval**: Once the user confirms the requirements are complete, conclude the process.
+1. **Confirm Feature Context (Auto-Infer First)**
 
-## EARS Requirements Format
-Use these structured templates:
-- **Ubiquitous**: "The system SHALL [requirement]"
-- **Event-Driven**: "WHEN [trigger] THEN the system SHALL [response]"
-- **State-Driven**: "WHILE [state] the system SHALL [requirement]"
-- **Conditional**: "IF [condition] THEN the system SHALL [requirement]"
-- **Optional**: "WHERE [feature included] the system SHALL [requirement]"
+   * IF `$ARGUMENTS` exists → use it
+   * ELSE IF inside a feature folder → infer from directory
+   * ELSE → list available features **only if needed**
 
-## Quality Gates - Requirement Validation
-Before finalizing requirements, ensure:
-- [ ] Uses proper EARS syntax
-- [ ] Requirements are testable and specific
-- [ ] All conditions clearly defined
-- [ ] No ambiguous terms used
-- [ ] Covers all user scenarios
+2. **Load Existing Requirements**
 
-## Final Approval Gate
-After updating the file, conclude with the standard approval gate:
-"Requirements for **[$ARGUMENTS]** are now detailed in `docx/features/[feature-name]/requirements.md`. Ready to proceed to the design phase with `/x:spec:design`?"
+   * Auto-load existing `requirements.md` (if present)
+   * Parse any incomplete, vague, or missing elements
 
-## Key Guidelines
-- Be conversational and inquisitive.
-- Guide the user towards providing specific, testable details.
-- Translate the user's needs into formal EARS requirements collaboratively.
-- Persist changes to the `requirements.md` file as they are approved.
+3. **Prompt Only When Necessary**
 
-Now, start the interactive process to detail the specification for: **$ARGUMENTS**
+   * Ask **only** when:
+
+     * Critical context is missing
+     * User intent is ambiguous
+     * Conflicting input is detected
+   * Examples:
+
+     * “The user goal is unclear — is it \[A] or \[B]?”
+     * “This feature mentions both manual and automatic modes. Which takes priority?”
+     * “Should this trigger under all logins, or only admin?”
+
+4. **Generate Requirements Proactively**
+
+   * Use existing content and best practices to propose:
+
+     * User stories
+     * EARS-formatted acceptance criteria
+   * Ask for confirmation only when assumptions are made
+
+5. **Clarify via Targeted Follow-Up**
+
+   * When clarification is needed:
+
+     * Be specific
+     * Offer choices
+     * Avoid open-ended prompts unless unavoidable
+
+6. **Validate & Seek Final Approval**
+
+   * Ensure all requirements:
+
+     * Follow EARS format
+     * Are independently testable
+     * Are not redundant
+
+
+---
+
+This reduces user burden while maintaining rigor. Let me know if you'd like me to insert this directly into the full `requirements.md`.
+
+
+---
+
+## Document Template
+
+```markdown
+# Requirements Document
+
+## Introduction
+
+[2–3 paragraphs about the feature: what it does, who it serves, key capabilities, and value.]
+
+## Requirements
+
+### Requirement 1: [Title]
+
+**User Story:** [REQUIRED] As a [role], I want [goal], so that [benefit].
+
+#### Acceptance Criteria
+
+1. WHEN [trigger/condition] THEN the system SHALL [expected behavior]
+2. WHEN [condition] THEN the system SHALL [expected behavior]
+````
+
+Repeat as needed for all requirements.
+
+---
+
+## Writing Standards: User Stories & EARS
+
+* **EVERY requirement MUST include:**
+
+* **User Story Format:**
+  `As a [user role], I want [goal], so that [benefit].`
+
+* **Acceptance Criteria Format (EARS):**
+
+  * Event-driven: `WHEN [event] THEN the system SHALL [behavior]`
+  * Ubiquitous: `The system SHALL [behavior]`
+  * State-driven: `WHILE [state] the system SHALL [behavior]`
+  * Conditional: `IF [condition] THEN the system SHALL [behavior]`
+  * Optional: `WHERE [optional feature] the system SHALL [behavior]`
+
+
+ **Generate Requirements Proactively**
+   * For EACH requirement, always include:
+     * User story (mandatory)
+     * EARS-formatted acceptance criteria (mandatory)
+   * Never skip the user story - it provides essential context
+
+
+
+## Example Requirement:
+
+### Requirement 1: User Login
+
+**User Story:** As a registered user, I want to log in with my credentials, so that I can access my personalized dashboard.
+
+#### Acceptance Criteria
+
+1. WHEN the user enters valid credentials THEN the system SHALL authenticate and redirect to dashboard
+2. WHEN the user enters invalid credentials THEN the system SHALL display an error message
+---
+
+
+
+## Quality Checklist ✅
+
+Each requirement must:
+
+* ✓ Include a user story (role, goal, benefit)
+* ✓ Follow EARS format in all acceptance criteria
+* ✓ Use only “SHALL” for behavior
+* ✓ Be testable and unambiguous
+* ✓ Cover core use case, edge cases, and error paths
+* ✓ Avoid implementation details
+* ✓ Be clearly structured in markdown
+
+---
+
+## Final Approval
+
+Once the user confirms the spec is complete:
+
+> “✅ Requirements for \[\$ARGUMENTS] are now detailed. Ready to move to design with `/x:spec:design`?”
+
+---
+
+## Notes for AI Facilitator
+
+* Be **conversational** but structured.
+* Probe for details: "How should that behave under error?", "What happens if the user is not logged in?"
+* Summarize back what you’ve captured: “Here’s how I wrote that requirement — does it match your intention?”
+* Make each requirement valuable and independently reviewable.
+
+---
+
+

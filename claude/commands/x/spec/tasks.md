@@ -8,10 +8,10 @@ allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), TodoW
 You are creating a comprehensive task breakdown from existing technical design following Test-Driven Development methodology and the Spec-Driven Agentic Development approach.
 
 ## Your Task
-Generate structured implementation tasks from existing design.md in the current feature context.
+Generate structured implementation tasks from existing design.md, requirements.md in the current feature context.
 
 ## Process
-1. **Locate design**: Find and read the design.md file in current context
+1. **Locate design**: Find and read the design.md , requirements.md files in current context
 2. **Generate tasks**: Create comprehensive tasks.md with TDD approach
 3. **Seek approval**: Request explicit user approval before proceeding to implementation
 
@@ -21,14 +21,15 @@ Follow Red-Green-Refactor cycle for each task. Tasks use checkbox format [ ] for
 ### Task Format
 ```
 ## [ ] Task [N]: [Component/Feature Name]
+_Requirements: Requirement 1, Requirement 3, Requirement 5_
 
 ### Description
 Brief description of what this task accomplishes
 
 ### Acceptance Criteria (EARS-based)
-- WHEN [scenario] THEN [expected outcome]
-- IF [condition] THEN [system behavior]
-- The system SHALL [requirement]
+- WHEN [scenario] THEN [expected outcome] _(from Requirement 1)_
+- IF [condition] THEN [system behavior] _(from Requirement 3)_
+- The system SHALL [requirement] _(from Requirement 5)_
 
 ### TDD Implementation Steps
 - [ ] **Red Phase**: Write failing test for [specific behavior]
@@ -55,6 +56,10 @@ Brief description of what this task accomplishes
 ### Example of Completed Task
 ```
 ## ✅ Task 1: Database Connection Setup
+_Requirements: Requirement 2, Requirement 4_
+
+### Description
+Establish a connection to the database using connection pooling.
 
 ### TDD Implementation Steps
 - ✅ **Red Phase**: Write failing test for database connection
@@ -121,20 +126,22 @@ Ensure each task:
 - [ ] Implementation approach clear
 - [ ] Includes specific TDD steps (Red-Green-Refactor)
 - [ ] Has measurable completion criteria
+- [ ] References specific requirement numbers (e.g., "Requirement 1", "Requirement 2")
+- [ ] Each acceptance criterion traces back to a numbered requirement
 
 ## TDD Guidelines
 - **Start with tests**: Always write failing tests first
 - **Minimal implementation**: Write just enough code to pass tests
 - **Continuous refactoring**: Improve design while maintaining green tests
 - **Test coverage**: Include unit, integration, and edge case tests
-- **Acceptance criteria**: Map EARS requirements to test scenarios
+- **Acceptance criteria**: Map EARS requirements to test scenarios with explicit requirement number references
 
 ## Key Principles
 - Break down complex features into small, manageable tasks
 - Ensure proper task sequencing and dependency management
 - Include both positive and negative test scenarios
 - Address error handling and edge cases explicitly
-- Maintain traceability back to original requirements
+- Maintain traceability back to original requirements using format "Requirement N" or "Requirement N: [Title]"
 
 ## Approval Gate
 After creating tasks.md, ask:
