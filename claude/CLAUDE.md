@@ -65,6 +65,11 @@ Always follow this sequence — **no skipping**: Research → Plan → Implement
 3. **Implement**  
    Build in small, validated steps with periodic checkpoints
 
+> 🗣 Say: "Let me research and plan before I begin implementation."
+
+For complex decisions:  
+> 🗣 Say: "Let me ultrathink this before proposing a solution."
+
 ### 📍 Implementation Checkpoints
 
 **During implementation, periodically:**
@@ -123,10 +128,88 @@ Always follow this sequence — **no skipping**: Research → Plan → Implement
 [Confidence: 0.9]
 ```
 
-> 🗣 Say: “Let me research and plan before I begin implementation.”
+---
 
-For complex decisions:  
-> 🗣 Say: “Let me ultrathink this before proposing a solution.”
+## 📋 Spec-Driven Development (For Complex Features)
+
+For substantial features or projects, use the spec-driven methodology with explicit approval gates:
+
+### Phase Structure
+1. **Planning** - Break down project into manageable features (`/x:spec:plan`)
+   - Interactive conversation to identify features
+   - Creates numbered feature directories (01-feature, 02-feature)
+   
+2. **Requirements** - Define WHAT using EARS format (`/x:spec:requirements [feature-name]`)
+   - Interactive elicitation of functional/non-functional requirements
+   - Produces EARS-formatted requirements.md
+   
+3. **Design** - Define HOW with technical specs (`/x:spec:design`)
+   - Tech stack selection (Full-Stack JS, Python, Cloud-Native, Enterprise, Custom)
+   - Creates comprehensive design.md with architecture
+   
+4. **Tasks** - Break into TDD steps (`/x:spec:tasks`)
+   - Generates implementable tasks with Red-Green-Refactor cycle
+   - Uses checkbox format for progress tracking
+   
+5. **Implementation** - Execute tasks with checkbox tracking (`/x:spec:execute`)
+   - Choose approach: TDD, Standard, Self-implementation, or Collaborative
+   - Updates checkboxes (✅) as work progresses
+
+### EARS Requirements Format
+Use these templates for clear, testable requirements:
+- **Ubiquitous**: "The system SHALL [requirement]"
+- **Event-Driven**: "WHEN [trigger] THEN the system SHALL [response]"
+- **State-Driven**: "WHILE [state] the system SHALL [requirement]"
+- **Conditional**: "IF [condition] THEN the system SHALL [requirement]"
+- **Optional**: "WHERE [feature included] the system SHALL [requirement]"
+
+### Requirements Best Practices
+- Use active voice and "SHALL" for mandatory requirements
+- Be specific and measurable (avoid "quickly", use "within 2 seconds")
+- One requirement per statement
+- Avoid ambiguous terms ("appropriate", "reasonable", "user-friendly")
+
+### Approval Gates
+Always request explicit approval before moving between phases:
+> 🗣 Say: "Requirements complete. Ready for design phase?"
+> 🗣 Say: "Design complete. Ready for task breakdown?"
+> 🗣 Say: "Tasks defined. Ready to begin implementation?"
+
+### File Structure
+```
+docx/
+└── features/
+    └── [NN-feature-name]/     # e.g., 01-user-auth, 02-payment
+        ├── requirements.md    # EARS-formatted requirements
+        ├── design.md         # Technical design document
+        └── tasks.md          # Implementation breakdown
+```
+
+---
+
+## 🧪 Test-Driven Development (TDD)
+
+When implementing features, especially from spec-driven tasks, follow TDD methodology:
+
+### Red-Green-Refactor Cycle
+1. **Red**: Write a failing test for next functionality
+2. **Green**: Write minimal code to make test pass
+3. **Refactor**: Improve code while keeping tests green
+
+### Implementation Flow
+1. Start with acceptance criteria from tasks as test scenarios
+2. Write unit tests for components and functions
+3. Write integration tests for APIs and data operations
+4. Implement code incrementally to satisfy tests
+5. Refactor continuously while maintaining green tests
+
+### Benefits
+- Requirements validation through executable tests
+- Early design feedback and issue detection
+- Built-in documentation through test scenarios
+- Safe refactoring with comprehensive test coverage
+
+> 🗣 Say: "Starting with TDD - writing failing test first."
 
 ---
 
