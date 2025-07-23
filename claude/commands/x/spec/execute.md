@@ -51,34 +51,37 @@ Implement the feature by executing the plan in `tasks.md`.
     *   Use your `TodoWrite` tool to create a task to create the `task_{nr}_completed.md` with the completion summary after each task
     *   Use your `TodoWrite` tool to create a task to update checkboxes in tasks.md as work progresses
 
-3.  **Execute Tasks (TDD Cycle)**:
-    *   Follow the task order from `tasks.md`.
-    *   For each task, strictly follow the Red-Green-Refactor cycle:
-        1.  **Red**: Write a failing test that corresponds to the acceptance criteria.
-            - Update checkbox: `- ✅ **Red Phase**: Write failing test for [specific behavior]`
-        2.  **Green**: Write the minimum amount of code required to make the test pass.
-            - Update checkbox: `- ✅ **Green Phase**: Implement minimal code to pass test`
-        3.  **Refactor**: Improve the code's structure and quality without changing its behavior.
-            - Update checkbox: `- ✅ **Refactor Phase**: Clean up while keeping tests green`
-    *   **Track progress with checkboxes**:
-        - Update TDD step checkboxes as you complete each phase
-        - Update test scenario checkboxes as tests are written
-        - Update completion checklist items as they are done
-    *   **After completing each task**:
-        1.  Mark the main task checkbox as complete: `## ✅ Task [N]: [Component/Feature Name]`
-        2.  **CREATE** a new file named `task_{nr}_completed.md` in the feature directory.
-        3.  In this file, provide a concise **SUMMARY** of the work done, including files created/modified and key decisions made.
-        4.  **ASK** for user confirmation: "Task {nr} is complete. Review the summary in `task_{nr}_completed.md`. Ready to proceed to next task?"
-        5.  Show progress update: "Progress: X/Y tasks completed (Z%)"
-    *   Run validation checks after each small implementation step.
+3. **Implementation Guidelines**
+   - Write clean, maintainable code
+   - Follow existing code patterns and conventions
+   - Include appropriate error handling
+   - Add unit tests where specified
+   - Document complex logic
 
-4.  **Verify Implementation**:
-    *   After completing all tasks, run the full test suite to ensure no regressions.
-    *   Confirm that the final implementation meets all acceptance criteria from `requirements.md`.
-    *   Perform any final validation steps mentioned in the design or tasks.
+4. **Validation**
+   - Verify implementation meets acceptance criteria
+   - Run tests if they exist
+   - Check for lint/type errors
+   - Ensure integration with existing code
 
-5.  **Complete**:
-    *   Ensure all tasks from `tasks.md` are completed.
-    *   Report completion status and a summary of the implementation.
+5. **Completion**
+   - **CRITICAL**: Mark task as complete in tasks.md by changing [ ] to [x]
+   - Update execution log with completion details
+   - Stop and wait for user review
+   - DO NOT automatically proceed to next task
+   - Confirm task completion status to user
 
-Progress through each task systematically, ensuring quality at each step.
+## Task Selection
+If no task-id specified:
+- Look at tasks.md for the spec
+- Recommend the next pending task
+- Ask user to confirm before proceeding
+
+## Important Rules
+- Only execute ONE task at a time
+- **ALWAYS** mark completed tasks as [x] in tasks.md
+- Always stop after completing a task
+- Wait for user approval before continuing
+- Never skip tasks or jump ahead
+- Confirm task completion status to user
+- Progress through each task systematically, ensuring quality at each step.

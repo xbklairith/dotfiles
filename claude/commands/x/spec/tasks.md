@@ -5,18 +5,18 @@ allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), TodoW
 
 # Implementation Task Breakdown
 
-You are creating a comprehensive task breakdown from existing technical design following Test-Driven Development methodology and the Spec-Driven Agentic Development approach.
+You are creating a comprehensive task breakdown from existing technical design following the Spec-Driven Agentic Development approach.
 
 ## Your Task
 Generate structured implementation tasks from existing design.md, requirements.md in the current feature context.
 
 ## Process
 1. **Locate design**: Find and read the design.md , requirements.md files in current context
-2. **Generate tasks**: Create comprehensive tasks.md with TDD approach
+2. **Generate tasks**: Create comprehensive tasks.md with clear implementation steps
 3. **Seek approval**: Request explicit user approval before proceeding to implementation
 
-## TDD Task Structure
-Follow Red-Green-Refactor cycle for each task. Tasks use checkbox format [ ] for tracking completion - mark as ✅ when complete:
+## Task Structure
+Tasks use checkbox format [ ] for tracking completion - mark as [x] when complete:
 
 ### Task Format
 ```
@@ -31,12 +31,12 @@ Brief description of what this task accomplishes
 - IF [condition] THEN [system behavior] _(from Requirement 3)_
 - The system SHALL [requirement] _(from Requirement 5)_
 
-### TDD Implementation Steps
-- [ ] **Red Phase**: Write failing test for [specific behavior]
-- [ ] **Green Phase**: Implement minimal code to pass test
-- [ ] **Refactor Phase**: Clean up while keeping tests green
+### Implementation Steps
+- [ ] [Step 1: Specific implementation action]
+- [ ] [Step 2: Next implementation action]
+- [ ] [Step 3: Validation or testing step]
 
-### Test Scenarios
+### Testing Requirements
 - [ ] Unit tests: [list key unit test cases]
 - [ ] Integration tests: [list integration scenarios]
 - [ ] Edge cases: [list error conditions and boundary cases]
@@ -55,28 +55,28 @@ Brief description of what this task accomplishes
 
 ### Example of Completed Task
 ```
-## ✅ Task 1: Database Connection Setup
+## [x] Task 1: Database Connection Setup
 _Requirements: Requirement 2, Requirement 4_
 
 ### Description
 Establish a connection to the database using connection pooling.
 
-### TDD Implementation Steps
-- ✅ **Red Phase**: Write failing test for database connection
-- ✅ **Green Phase**: Implement minimal connection logic
-- ✅ **Refactor Phase**: Clean up connection pooling
+### Implementation Steps
+- [x] Create database configuration module
+- [x] Implement connection pooling logic
+- [x] Add connection retry mechanism
 
-### Test Scenarios
-- ✅ Unit tests: Connection string validation
-- ✅ Integration tests: Actual database connection
-- ✅ Edge cases: Connection timeout handling
+### Testing Requirements
+- [x] Unit tests: Connection string validation
+- [x] Integration tests: Actual database connection
+- [x] Edge cases: Connection timeout handling
 
 ### Completion Checklist
-- ✅ All tests written and passing
-- ✅ Code implemented and refactored
-- ✅ Edge cases handled
-- ✅ Documentation updated
-- ✅ Code reviewed
+- [x] All tests written and passing
+- [x] Code implemented
+- [x] Edge cases handled
+- [x] Documentation updated
+- [x] Code reviewed
 ```
 
 ## Task Breakdown Strategy
@@ -124,17 +124,17 @@ Ensure each task:
 - [ ] Test scenarios included (unit, integration, edge cases)
 - [ ] Acceptance criteria defined based on EARS requirements
 - [ ] Implementation approach clear
-- [ ] Includes specific TDD steps (Red-Green-Refactor)
+- [ ] Includes clear implementation steps
 - [ ] Has measurable completion criteria
 - [ ] References specific requirement numbers (e.g., "Requirement 1", "Requirement 2")
 - [ ] Each acceptance criterion traces back to a numbered requirement
 
-## TDD Guidelines
-- **Start with tests**: Always write failing tests first
-- **Minimal implementation**: Write just enough code to pass tests
-- **Continuous refactoring**: Improve design while maintaining green tests
-- **Test coverage**: Include unit, integration, and edge case tests
-- **Acceptance criteria**: Map EARS requirements to test scenarios with explicit requirement number references
+## Implementation Guidelines
+- **Clear steps**: Break down work into specific, actionable steps
+- **Incremental progress**: Implement in small, verifiable chunks
+- **Testing**: Ensure comprehensive test coverage
+- **Validation**: Verify each step meets acceptance criteria
+- **Requirement traceability**: Map all work back to specific requirements
 
 ## Key Principles
 - Break down complex features into small, manageable tasks
@@ -145,14 +145,13 @@ Ensure each task:
 
 ## Approval Gate
 After creating tasks.md, ask:
-"Implementation task breakdown complete. Created [N] tasks following TDD methodology, covering [key areas]. Tasks are sequenced with proper dependencies and include comprehensive test scenarios. Ready to begin implementation, or would you like to review and modify the task breakdown first?"
+"Implementation task breakdown complete. Created [N] tasks covering [key areas]. Tasks are sequenced with proper dependencies and include testing requirements. Ready to begin implementation, or would you like to review and modify the task breakdown first?"
 
 ## Implementation Options
 Present these choices:
-1. **TDD Implementation**: Follow Red-Green-Refactor for each task
-2. **Standard Implementation**: Implement without strict TDD process
-3. **Self Implementation**: User implements using tasks as guide
-4. **Collaborative**: Mixed approach with user and AI collaboration
+1. **Standard Implementation**: Implement with testing and validation
+2. **Self Implementation**: User implements using tasks as guide
+3. **Collaborative**: Mixed approach with user and AI collaboration
 
 ## Next Steps
 - User reviews task breakdown and approves/requests changes

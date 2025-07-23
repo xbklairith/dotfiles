@@ -7,91 +7,74 @@ allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), TodoW
 
 You are creating a comprehensive technical design based on existing EARS requirements following the Spec-Driven Agentic Development methodology.
 
-## Your Task
-Generate technical design from existing requirements in the current feature directory.
+## Instructions
+You are working on the design phase of the spec workflow.
 
-## Process
-1. **Confirm Feature Context**: Ensure you are in a feature directory with an existing `requirements.md` file.
-   *   If no feature context is provided, list available features and ask the user to select one.
-2. **Locate requirements**: Find and read the requirements.md file in current context
-3. **Tech stack selection**: Present options and gather user preferences
-4. **Generate design**: Create comprehensive design.md addressing all requirements
-5. **Seek approval**: Request explicit user approval before proceeding
+1. **Prerequisites**
+   - Ensure requirements.md exists and is approved
+   - Load the requirements document for context
+   - Research existing codebase patterns and architecture
 
-## Tech Stack Options
-Present these 4 high-level options plus custom:
+2. **Generate Design Document**
+   - Create comprehensive design following the template
+   - Include all required sections:
+     - Overview
+     - Architecture
+     - Components and Interfaces
+     - Data Models
+     - Error Handling
+     - Testing Strategy
 
-1. **Full-Stack JavaScript** (Node.js + React/Vue + Database)
-2. **Python Backend + Modern Frontend** (FastAPI/Django + React/Vue + Database)  
-3. **Cloud-Native Microservices** (Kubernetes + API Gateway + Managed Services)
-4. **Enterprise Java/C#** (Spring Boot/.NET + Enterprise patterns)
-5. **Custom/Other** (User specifies or modifies above options)
+3. **Codebase Research Phase** (MANDATORY)
+   - **Map existing patterns**: Identify data models, API patterns, component structures that match your needs
+   - **Catalog reusable utilities**: Find validation functions, helpers, middleware, hooks that can be leveraged
+   - **Document architectural decisions**: Note existing tech stack, state management, routing patterns to follow
+   - **Identify integration points**: Map how new feature connects to existing auth, database, APIs
+   - **Find similar implementations**: Look for features with similar requirements already implemented
+   - **Note gaps**: Document what needs to be built vs. what can be reused or extended
 
-Then ask up to 3 follow-up questions about:
-- Specific frameworks/libraries within chosen stack
-- Database preferences and data modeling approach  
-- Deployment and infrastructure preferences
+4. **Design Content** (leverage codebase research)
+   - **Reuse Architecture**: Build on existing patterns rather than creating new ones
+   - **Extend Components**: Design to leverage and extend existing utilities, services, components
+   - Use Mermaid diagrams for visual representations
+   - Define clear interfaces that integrate with existing systems
+   - Specify data models that follow established patterns
+   - Plan error handling consistent with current approach
+   - Outline testing approach using existing test utilities
 
-## Design Document Structure
-Create design.md with these sections:
+5. **Approval Process**
+   - Present the complete design document
+   - **Highlight code reuse**: Clearly show what existing code will be leveraged
+   - Ask: "Does the design look good? If so, we can move on to the implementation plan."
+   - Incorporate feedback and revisions
+   - Continue until explicit approval
 
-### Technical Overview
-- Architecture approach and rationale
-- Technology stack justification
-- Key design decisions
+## Design Structure
+\`\`\`markdown
+# Design Document
 
-### System Architecture  
-- High-level component diagram (textual)
-- Data flow and component interactions
-- Integration points and dependencies
+## Overview
+[High-level description]
 
-### Data Design
-- Database schema and relationships
-- Data validation and constraints
-- Migration and versioning strategy
+## Code Reuse Analysis
+[What existing code will be leveraged, extended, or integrated]
 
-### API Design
-- Endpoint specifications
-- Request/response formats
-- Authentication and authorization
+## Architecture
+[System architecture building on existing patterns]
 
-### Security Considerations
-- Authentication mechanisms
-- Data protection and encryption
-- Input validation and sanitization
-- Access control and permissions
+## Components and Interfaces
+[Detailed component specifications with reuse opportunities]
 
-### Performance & Scalability
-- Performance targets and bottlenecks
-- Caching strategies
-- Database optimization
-- Scaling considerations
+## Data Models
+[Data structures following established patterns]
 
-### Implementation Approach
-- Development phases and priorities
-- Testing strategy alignment
-- Deployment and rollout plan
+## Error Handling
+[Error scenarios consistent with current approach]
 
-## Design Quality Gates
-Ensure design:
-- [ ] Addresses all requirements
-- [ ] Technical approach is sound
-- [ ] Scalability considerations included
-- [ ] Security aspects addressed
-- [ ] Integration points defined
-- [ ] Defines clear component boundaries
-- [ ] Specifies data models and relationships
-- [ ] Covers error handling and edge cases
-- [ ] Includes performance considerations
-- [ ] Is implementable with chosen tech stack
+## Testing Strategy
+[Testing approach using existing utilities and patterns]
+\`\`\`
 
-## Key Guidelines
-- Map each EARS requirement to specific technical solutions
-- Address all WHEN/THEN conditions with technical approaches
-- Include comprehensive error handling strategies
-- Consider scalability and maintainability
-- Specify clear interfaces between components
-- Include testing strategy for design validation
 
 ## Approval Gate
 After creating design.md, ask:
