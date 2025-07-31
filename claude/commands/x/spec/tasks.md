@@ -1,17 +1,20 @@
 ---
-description: Break down technical design into implementable TDD tasks
+description: Break down technical design into implementation tasks
 allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), TodoWrite
 ---
 
-# Implementation Task Breakdown
+# Generate Implementation Tasks
 
-You are creating a comprehensive task breakdown from existing technical design following the Spec-Driven Agentic Development approach.
+## Context
+You are creating a comprehensive task breakdown from existing technical design. This is the fourth phase of the spec-driven development workflow, following design creation.
 
-## Your Task
-Generate structured implementation tasks from existing design.md, requirements.md in the current feature context.
+## Instructions
 
-## Process
-1. **Locate design**: Find and read the design.md , requirements.md files in current context
+### Process
+1. **Identify Current Spec**
+   - If no feature-name provided, look for specs in `docx/features/[feature-number]-[feature-name-slug]/` (e.g., `docx/features/01-project-setup/`).
+   - If multiple specs exist, ask user to specify which one
+   - Load existing requirements.md if it exists
 2. **Generate tasks**: Create comprehensive tasks.md with clear implementation steps
 3. **Seek approval**: Request explicit user approval before proceeding to implementation
 
@@ -117,7 +120,13 @@ Establish a connection to the database using connection pooling.
 - Security validation
 - Documentation completion
 
-## Task Quality Gates
+
+### 7. Commit and Cleanup Tasks
+- Clean up temporary files and external logs
+- Verify staged files
+- Commit with concise message one line (no co-authors)
+
+## Task Quality Gates 
 Ensure each task:
 - [ ] Tasks are granular and actionable (2-4 hours each)
 - [ ] Proper sequencing and dependencies specified
@@ -143,20 +152,8 @@ Ensure each task:
 - Address error handling and edge cases explicitly
 - Maintain traceability back to original requirements using format "Requirement N" or "Requirement N: [Title]"
 
-## Approval Gate
-After creating tasks.md, ask:
-"Implementation task breakdown complete. Created [N] tasks covering [key areas]. Tasks are sequenced with proper dependencies and include testing requirements. Ready to begin implementation, or would you like to review and modify the task breakdown first?"
-
-## Implementation Options
-Present these choices:
-1. **Standard Implementation**: Implement with testing and validation
-2. **Self Implementation**: User implements using tasks as guide
-3. **Collaborative**: Mixed approach with user and AI collaboration
-
 ## Next Steps
-- User reviews task breakdown and approves/requests changes
-- User selects implementation approach
-- Begin structured development following approved tasks
-- Maintain task tracking and progress updates
-
-Now generate the implementation task breakdown based on existing design.
+After user approval:
+- User can run `/x:spec:execute` to begin implementation
+- Tasks serve as step-by-step implementation guide
+- Progress tracked via checkbox updates in tasks.md

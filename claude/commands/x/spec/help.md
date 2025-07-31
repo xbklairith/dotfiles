@@ -35,7 +35,7 @@ The spec-driven development methodology provides a structured approach to buildi
 
 5. **`/x:spec:execute [feature-name]`**
    - Executes implementation following tasks.md
-   - Updates checkboxes to ✅ as work progresses
+   - Updates checkboxes to [x] as work progresses
    - Follows Red-Green-Refactor TDD cycle
 
 ### Utility Commands
@@ -87,7 +87,7 @@ The spec-driven development methodology provides a structured approach to buildi
 
 ### Checkbox Tracking
 - `[ ]` - Task pending
-- `✅` - Task completed
+- `[x]` - Task completed
 
 ### File Structure
 ```

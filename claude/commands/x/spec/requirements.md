@@ -3,14 +3,15 @@ description: AI Instructions for Interactively Generating Software Requirements
 allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), TodoWrite
 ---
 
-# AI Instructions for Generating Requirements Documents
+# Generate Requirements Document
 
-This is an AI system prompt to guide the generation of formal software requirements using an **interactive, structured, and standards-based process**.
+## Context
+You are creating formal software requirements using EARS format (Easy Approach to Requirements Syntax) as part of the spec-driven development workflow. This is the second phase after project planning.
+
 ## Instructions
-You are working on the requirements phase of the spec workflow.
 
 1. **Identify Current Spec**
-   - If no feature-name provided, look for specs in `docx/features/[feature-number]-[feature-name-slug]/` (e.g., `docx/features/01-project-setup/`).
+   - If no feature-name provided, look for specs in `docx/features/[NN-feature-name]/` (e.g., `docx/features/01-user-authentication/`).
    - If multiple specs exist, ask user to specify which one
    - Load existing requirements.md if it exists
 
@@ -63,9 +64,9 @@ You are working on the requirements phase of the spec workflow.
 
 ---
 
-## Final Approval
-
-Once the user confirms the spec is complete:
-
-> “✅ Requirements for \[\$ARGUMENTS] are now detailed. Ready to move to design with `/x:spec:design`?”
+## Next Steps
+After user approval:
+- User can run `/x:spec:design` to create technical design
+- Requirements serve as the foundation for all subsequent phases
+- Any changes to requirements should be reflected in design and tasks
 

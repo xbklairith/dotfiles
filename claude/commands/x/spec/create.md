@@ -3,15 +3,16 @@ description: Create a new feature specification following the spec-driven workfl
 allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), TodoWrite
 ---
 
-# Create a New Feature Specification
+# Create Feature Specification
 
-You are creating a single feature specification following the spec-driven workflow.
+## Context
+You are creating a single feature specification following the spec-driven workflow. This creates the initial structure before requirements definition.
 
-## Your Task
+## Instructions
 
 Create a feature specification for: **$ARGUMENTS**
 
-## Process
+### Process
 
 1. **Parse Feature Input**
    - Extract the feature name from `$ARGUMENTS`
@@ -59,20 +60,8 @@ Create a feature specification for: **$ARGUMENTS**
 (To be completed in the task breakdown phase)
 ```
 
-## Final Output
-
-After creating the feature directory and files, provide a summary:
-"Created feature specification for '[Feature Name]' in `docx/features/[NN-feature-name]/`.
-
-Next steps:
-- Run `/x:spec:requirements [NN-feature-name]` to define detailed requirements
-- Or run `/x:spec:requirements` to work on the most recent feature"
-
-## Key Guidelines
-
-- Create only ONE feature at a time
-- Use sequential numbering (01, 02, 03...)
-- Maintain consistent naming conventions
-- Do not overwrite existing features
-
-Now, create the feature specification for: **$ARGUMENTS**
+## Next Steps
+After creating the feature directory and files:
+- User can run `/x:spec:requirements [NN-feature-name]` to define detailed requirements
+- Or run `/x:spec:requirements` to work on the most recent feature
+- Feature directory structure is ready for the spec-driven workflow

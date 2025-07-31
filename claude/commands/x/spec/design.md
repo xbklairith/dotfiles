@@ -3,12 +3,12 @@ description: Generate technical design from existing EARS requirements
 allowed-tools: Read(*), Write(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), TodoWrite
 ---
 
-# Technical Design Generation
+# Generate Technical Design
 
-You are creating a comprehensive technical design based on existing EARS requirements following the Spec-Driven Agentic Development methodology.
+## Context
+You are creating a comprehensive technical design based on existing EARS requirements. This is the third phase of the spec-driven development workflow, following requirements definition.
 
 ## Instructions
-You are working on the design phase of the spec workflow.
 
 1. **Prerequisites**
    - Ensure requirements.md exists and is approved
@@ -76,13 +76,8 @@ You are working on the design phase of the spec workflow.
 \`\`\`
 
 
-## Approval Gate
-After creating design.md, ask:
-"Technical design complete. The design addresses all requirements using [tech stack] with [key architectural decisions]. Ready to proceed to task breakdown with `/x:spec:tasks`, or would you like to review and modify the design first?"
-
 ## Next Steps
-- User reviews design and approves/requests changes
-- Once approved, user can run `/x:spec:tasks` to proceed to implementation planning
+After user approval:
+- User can run `/x:spec:tasks` to create implementation task breakdown
 - Design serves as blueprint for structured development
-
-Now generate the technical design based on existing requirements.
+- Technical decisions guide all implementation work
