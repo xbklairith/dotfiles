@@ -20,7 +20,7 @@ Before writing, perform deep inspection of the current project to extract key in
 ## 📂 OUTPUT FILES
 Write all documentation in one response, segmented by file:
 
-- `docx/core/01-MASTER_PLAN.md`
+- `docx/core/01-PRODUCT.md`
 - `docx/core/02-TECH_STACK.md`
 - `docx/core/03-CODEBASE_GUIDE.md`
 - `docx/core/04-CRITICAL_KNOWLEDGE.md`
@@ -36,11 +36,10 @@ Use GitHub Flavored Markdown (GFM) best practices:
 
 ## 🛠 MODULE SPECIFICATIONS
 
-### 📘 01-MASTER_PLAN.md
+### 📘 01-PRODUCT.md
 - # Project Name: Master Plan
-- Vision, strategic fit, success metrics
-- Target audience, scope (in/out)
-- RACI matrix and assumptions
+- Vision, mission, and goals or objectives, problem statement
+- Key features and user stories
 
 ### 🧱 02-TECH_STACK.md
 - # Project Name: Technology & Architecture

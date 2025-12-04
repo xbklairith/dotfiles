@@ -5,6 +5,27 @@ We're building **production-grade software** together. Your responsibility is to
 If things get overly complex or stuck, I'll guide you back on track.
 
 ---
+## Rephrase Prompt Agent
+The agent must rephrase the user's prompt, correct any grammar, and choose words and sentence structures commonly used by native English speakers.
+The meaning of the original prompt should remain the same, but the phrasing should be smoother, clearer, and more natural.
+
+### Requirements
+
+- Preserve the user’s intended meaning.
+- Improve clarity, flow, tone, and readability.
+- Correct all grammar, punctuation, and syntax errors.
+- Rewrite using phrasing typical of native English speakers.
+- Avoid adding new content that changes the intent of the prompt.
+- Output only the revised prompt unless explicitly asked otherwise.
+
+### Example
+
+**User:**
+“make this sound more nice english good grammar job interview question”
+
+**Agent Output:**
+“Please rewrite this to sound more natural in English with proper grammar. It’s for a job interview question.”
+
 
 ## 📊 Confidence Score Reporting
 
@@ -40,12 +61,12 @@ End every response with: `[Confidence: X.X]`
 
 **All automated checks must pass 100% before proceeding.**
 
-- No formatting issues  
-- No linter violations  
-- No runtime/config errors  
-- no type errors
-- no test failures
-- No forbidden patterns  
+[ ] No formatting issues  
+[ ] No linter violations  
+[ ] No runtime/config errors  
+[ ] No type errors
+[ ] No test failures
+[ ] No forbidden patterns  
 
 > These are **strict requirements**. Fix everything before continuing.
 
@@ -56,7 +77,6 @@ Run your project’s format, test, and lint commands frequently.
 ## 🔁 Workflow You Must Follow
 
 Always follow this sequence — **no skipping**: Research → Plan → Implement 
-
 
 1. **Research**  
    Understand the existing system, patterns, and dependencies  
@@ -75,11 +95,9 @@ For complex decisions:
 **During implementation, periodically:**
 
 1. **Run Existing Tests** (every 2-3 file changes)
-   ```bash
-   npm test
-   npm run type-check
-   npm run lint
-   ```
+   - Run all tests to ensure nothing breaks
+   - If tests fail, fix them immediately
+   - If no tests exist, create them for new functionality
    > 🗣 Say: "Running tests... [✓ All tests pass] or [✗ X tests failing, fixing now]"
 
 2. **Write New Tests** (for each new feature/function)
@@ -99,20 +117,6 @@ For complex decisions:
    - Commit frequently (every 30-60 min of work)
    > 🗣 Say: "Committed: 'Add user authentication logic'"
 
-### 🔄 Checkpoint Rhythm
-
-**Mini-checkpoint every:**
-- ✓ 2-3 files modified
-- ✓ 1 feature completed
-- ✓ 30 minutes of work
-- ✓ Before switching context
-
-**Full checkpoint includes:**
-1. Run all tests
-2. Fix any failures
-3. Write missing tests
-4. Commit changes
-5. Report status
 
 ### 📊 Status Reporting Format
 
@@ -130,88 +134,24 @@ For complex decisions:
 
 ---
 
-## 📋 Spec-Driven Development (For Complex Features)
+## File Structure of knowledge base
 
-For substantial features or projects, use the spec-driven methodology with explicit approval gates:
+### Core
+These files provide foundational knowledge about the project, its goals, and technical architecture.
 
-### Phase Structure
-1. **Planning** - Break down project into manageable features (`/x:spec:plan`)
-   - Interactive conversation to identify features
-   - Creates numbered feature directories (01-feature, 02-feature)
-   
-2. **Requirements** - Define WHAT using EARS format (`/x:spec:requirements [feature-name]`)
-   - Interactive elicitation of functional/non-functional requirements
-   - Produces EARS-formatted requirements.md
-   
-3. **Design** - Define HOW with technical specs (`/x:spec:design`)
-   - Tech stack selection (Full-Stack JS, Python, Cloud-Native, Enterprise, Custom)
-   - Creates comprehensive design.md with architecture
-   
-4. **Tasks** - Break into TDD steps (`/x:spec:tasks`)
-   - Generates implementable tasks with Red-Green-Refactor cycle
-   - Uses checkbox format for progress tracking
-   
-5. **Implementation** - Execute tasks with checkbox tracking (`/x:spec:execute`)
-   - Choose approach: TDD, Standard, Self-implementation, or Collaborative
-   - Updates checkboxes (✅) as work progresses
+- docx/core/01-PRODUCT.md         
+- docx/core/02-TECH_STACK.md       
+- docx/core/03-CODEBASE_GUIDE.md   
+- docx/core/04-CRITICAL_KNOWLEDGE.md       
 
-### EARS Requirements Format
-Use these templates for clear, testable requirements:
-- **Ubiquitous**: "The system SHALL [requirement]"
-- **Event-Driven**: "WHEN [trigger] THEN the system SHALL [response]"
-- **State-Driven**: "WHILE [state] the system SHALL [requirement]"
-- **Conditional**: "IF [condition] THEN the system SHALL [requirement]"
-- **Optional**: "WHERE [feature included] the system SHALL [requirement]"
 
-### Requirements Best Practices
-- Use active voice and "SHALL" for mandatory requirements
-- Be specific and measurable (avoid "quickly", use "within 2 seconds")
-- One requirement per statement
-- Avoid ambiguous terms ("appropriate", "reasonable", "user-friendly")
+### Features
+These files contain structured specifications for each feature, including requirements, design, tasks, and implementation details for particular features.
+- docx/features/[NN-feature-name]/requirements.md   # EARS requirements
+- docx/features/[NN-feature-name]/design.md        # Technical design
+- docx/features/[NN-feature-name]/tasks.md         # TDD tasks with checkboxes
+- docx/features/[NN-feature-name]/task_*_completed.md  # Task summaries
 
-### Approval Gates
-Always request explicit approval before moving between phases:
-> 🗣 Say: "Requirements complete. Ready for design phase?"
-> 🗣 Say: "Design complete. Ready for task breakdown?"
-> 🗣 Say: "Tasks defined. Ready to begin implementation?"
-
-### File Structure
-```
-docx/
-└── features/
-    └── [NN-feature-name]/     # e.g., 01-user-auth, 02-payment
-        ├── requirements.md    # EARS-formatted requirements
-        ├── design.md         # Technical design document
-        └── tasks.md          # Implementation breakdown
-```
-
----
-
-## 🧪 Test-Driven Development (TDD)
-
-When implementing features, especially from spec-driven tasks, follow TDD methodology:
-
-### Red-Green-Refactor Cycle
-1. **Red**: Write a failing test for next functionality
-2. **Green**: Write minimal code to make test pass
-3. **Refactor**: Improve code while keeping tests green
-
-### Implementation Flow
-1. Start with acceptance criteria from tasks as test scenarios
-2. Write unit tests for components and functions
-3. Write integration tests for APIs and data operations
-4. Implement code incrementally to satisfy tests
-5. Refactor continuously while maintaining green tests
-
-### Benefits
-- Requirements validation through executable tests
-- Early design feedback and issue detection
-- Built-in documentation through test scenarios
-- Safe refactoring with comprehensive test coverage
-
-> 🗣 Say: "Starting with TDD - writing failing test first."
-
----
 
 ## 🤖 Use Multiple Agents
 
