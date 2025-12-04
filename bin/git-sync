@@ -1,0 +1,117 @@
+#!/bin/bash
+#
+# git-sync - Fetch git objects from upstream and update local branches
+#
+# Replicates `hub sync` functionality:
+#   - Fetches all remotes
+#   - Fast-forwards local branches that are behind their upstream
+#   - Warns about branches with unpushed work
+#   - Deletes branches that appear merged and whose upstream was deleted
+#
+# Usage: git sync
+#
+# Examples:
+#   git sync
+#   gsync
+
+set -e
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Get default remote (usually 'origin')
+get_default_remote() {
+    git remote | head -1
+}
+
+# Get the current branch name
+current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+
+# Fetch all remotes
+echo -e "${CYAN}Fetching from all remotes...${NC}"
+git fetch --all --prune --quiet
+
+remote=$(get_default_remote)
+
+if [ -z "$remote" ]; then
+    echo -e "${RED}No remote configured${NC}"
+    exit 1
+fi
+
+# Process each local branch
+git for-each-ref --format='%(refname:short) %(upstream:short) %(upstream:track)' refs/heads | \
+while read local_branch upstream tracking; do
+    # If no upstream is configured, try to find a same-named branch on remote
+    if [ -z "$upstream" ]; then
+        if git show-ref --verify --quiet "refs/remotes/${remote}/${local_branch}"; then
+            upstream="${remote}/${local_branch}"
+        else
+            continue
+        fi
+    fi
+
+    # Check if upstream still exists
+    if ! git show-ref --verify --quiet "refs/remotes/${upstream}"; then
+        # Upstream was deleted - check if branch is merged into default branch
+        default_branch=$(git symbolic-ref --short "refs/remotes/${remote}/HEAD" 2>/dev/null | sed "s|${remote}/||" || echo "main")
+
+        # Try common default branch names if the above fails
+        if ! git show-ref --verify --quiet "refs/remotes/${remote}/${default_branch}"; then
+            for try_branch in main master develop; do
+                if git show-ref --verify --quiet "refs/remotes/${remote}/${try_branch}"; then
+                    default_branch=$try_branch
+                    break
+                fi
+            done
+        fi
+
+        # Check if the branch is merged
+        if git branch --merged "${remote}/${default_branch}" 2>/dev/null | grep -q "^[* ]*${local_branch}$"; then
+            if [ "$local_branch" = "$current_branch" ]; then
+                echo -e "${YELLOW}warning: ${local_branch} seems merged but is checked out${NC}"
+            else
+                echo -e "${GREEN}Deleting merged branch: ${local_branch}${NC}"
+                git branch -d "$local_branch" 2>/dev/null || true
+            fi
+        fi
+        continue
+    fi
+
+    # Get the local and remote commit hashes
+    local_hash=$(git rev-parse "$local_branch")
+    remote_hash=$(git rev-parse "$upstream")
+
+    # Skip if already up to date
+    if [ "$local_hash" = "$remote_hash" ]; then
+        continue
+    fi
+
+    # Check if local branch has unpushed commits
+    ahead=$(git rev-list --count "${upstream}..${local_branch}" 2>/dev/null || echo "0")
+    behind=$(git rev-list --count "${local_branch}..${upstream}" 2>/dev/null || echo "0")
+
+    if [ "$ahead" -gt 0 ] && [ "$behind" -gt 0 ]; then
+        echo -e "${YELLOW}warning: ${local_branch} has diverged from ${upstream}${NC}"
+        continue
+    elif [ "$ahead" -gt 0 ]; then
+        echo -e "${YELLOW}warning: ${local_branch} is ahead of ${upstream} by ${ahead} commit(s)${NC}"
+        continue
+    fi
+
+    # Fast-forward the branch
+    if [ "$local_branch" = "$current_branch" ]; then
+        # For current branch, do a regular fast-forward merge
+        echo -e "${GREEN}Updating current branch: ${local_branch}${NC}"
+        git merge --ff-only "$upstream" --quiet
+    else
+        # For other branches, update ref directly
+        echo -e "${GREEN}Updating: ${local_branch}${NC}"
+        git update-ref "refs/heads/${local_branch}" "$remote_hash" "$local_hash"
+    fi
+done
+
+echo -e "${CYAN}Sync complete.${NC}"
