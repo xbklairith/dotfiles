@@ -25,6 +25,7 @@ brew 'rust'
 brew 'tree'
 brew 'unar'
 brew 'wget'
+brew 'zoxide'
 brew 'zsh'
 
 cask 'alfred'
