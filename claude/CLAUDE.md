@@ -5,27 +5,6 @@ We're building **production-grade software** together. Your responsibility is to
 If things get overly complex or stuck, I'll guide you back on track.
 
 ---
-## Rephrase Prompt Agent
-The agent must rephrase the user's prompt, correct any grammar, and choose words and sentence structures commonly used by native English speakers.
-The meaning of the original prompt should remain the same, but the phrasing should be smoother, clearer, and more natural.
-
-### Requirements
-
-- Preserve the user’s intended meaning.
-- Improve clarity, flow, tone, and readability.
-- Correct all grammar, punctuation, and syntax errors.
-- Rewrite using phrasing typical of native English speakers.
-- Avoid adding new content that changes the intent of the prompt.
-- Output only the revised prompt unless explicitly asked otherwise.
-
-### Example
-
-**User:**
-“make this sound more nice english good grammar job interview question”
-
-**Agent Output:**
-“Please rewrite this to sound more natural in English with proper grammar. It’s for a job interview question.”
-
 
 ## 📊 Confidence Score Reporting
 
@@ -49,76 +28,27 @@ End every response with: `[Confidence: X.X]`
 - Conflicting requirements
 - Assumptions made without verification
 
-### Examples
-- "Fixed the API endpoint and verified it works" [Confidence: 0.9]
-- "This should fix the issue based on the error message" [Confidence: 0.7]
-- "I think this might work but need to test it" [Confidence: 0.5]
-- "I'm not sure about this approach, let me research more" [Confidence: 0.3]
-
 ---
 
-## ✅ Mandatory Checks
+## 🔁 Workflow
 
-**All automated checks must pass 100% before proceeding.**
+Always follow this sequence — **no skipping**: Research → Plan → Implement
 
-[ ] No formatting issues  
-[ ] No linter violations  
-[ ] No runtime/config errors  
-[ ] No type errors
-[ ] No test failures
-[ ] No forbidden patterns  
+1. **Research** — Understand the existing system, patterns, and dependencies
+2. **Plan** — Draft your solution and confirm it with me
+3. **Implement** — Build in small, validated steps with periodic checkpoints
 
-> These are **strict requirements**. Fix everything before continuing.
+For kisune projects, use `spec-driven-planning`, `brainstorming`, and `spec-driven-implementation` skills for this workflow.
 
-Run your project’s format, test, and lint commands frequently.
+### Implementation Checkpoints
 
----
+During implementation, periodically:
 
-## 🔁 Workflow You Must Follow
+1. **Run existing tests** every 2-3 file changes — fix failures immediately before continuing
+2. **Write tests BEFORE implementing** — strict TDD; no production code without a failing test first
+3. **Commit** after each logical unit of work — one-line message, imperative mood, stage specific files (not `git add .`)
 
-Always follow this sequence — **no skipping**: Research → Plan → Implement 
-
-1. **Research**  
-   Understand the existing system, patterns, and dependencies  
-2. **Plan**  
-   Draft your solution and confirm it with me  
-3. **Implement**  
-   Build in small, validated steps with periodic checkpoints
-
-> 🗣 Say: "Let me research and plan before I begin implementation."
-
-For complex decisions:  
-> 🗣 Say: "Let me ultrathink this before proposing a solution."
-
-### 📍 Implementation Checkpoints
-
-**During implementation, periodically:**
-
-1. **Run Existing Tests** (every 2-3 file changes)
-   - Run all tests to ensure nothing breaks
-   - If tests fail, fix them immediately
-   - If no tests exist, create them for new functionality
-   > 🗣 Say: "Running tests... [✓ All tests pass] or [✗ X tests failing, fixing now]"
-
-2. **Write New Tests** (for each new feature/function)
-   - Write tests BEFORE or IMMEDIATELY AFTER implementation
-   - Ensure coverage for happy path and edge cases
-   - Run tests to verify they pass
-   > 🗣 Say: "Added tests for [feature]. Coverage now at X%"
-
-3. **Git Commit** (after each logical unit of work)
-   ```bash
-   git add .
-   git commit -m "Add user authentication logic"
-   ```
-   - Use present tense, imperative mood
-   - One-line commits only
-   - NO co-authors
-   - Commit frequently (every 30-60 min of work)
-   > 🗣 Say: "Committed: 'Add user authentication logic'"
-
-
-### 📊 Status Reporting Format
+### Checkpoint Status Format
 
 ```
 🔄 Checkpoint Update:
@@ -134,317 +64,131 @@ For complex decisions:
 
 ---
 
-## File Structure of knowledge base
+## ✅ Quality Gate
 
-### Core
-These files provide foundational knowledge about the project, its goals, and technical architecture.
+**All automated checks must pass before proceeding.**
 
-- docx/core/01-PRODUCT.md         
-- docx/core/02-TECH_STACK.md       
-- docx/core/03-CODEBASE_GUIDE.md   
-- docx/core/04-CRITICAL_KNOWLEDGE.md       
+- [ ] No formatting issues
+- [ ] No linter violations
+- [ ] No runtime/config errors
+- [ ] No type errors
+- [ ] No test failures
 
+**If any check fails:** STOP all other work → FIX the issue → VERIFY by rerunning → RESUME. Never ignore failures.
 
-### Features
-These files contain structured specifications for each feature, including requirements, design, tasks, and implementation details for particular features.
-- docx/features/[NN-feature-name]/requirements.md   # EARS requirements
-- docx/features/[NN-feature-name]/design.md        # Technical design
-- docx/features/[NN-feature-name]/tasks.md         # TDD tasks with checkboxes
-- docx/features/[NN-feature-name]/task_*_completed.md  # Task summaries
+Run format, test, and lint commands frequently.
 
+---
+
+## File Structure of Knowledge Base
+
+If a project has a `docx/` directory, it contains structured knowledge:
+
+- `docx/core/` — Product goals, tech stack, codebase guide, critical knowledge
+- `docx/features/[NN-feature-name]/` — Requirements, design, tasks, completed task summaries
+
+Not all projects use this structure — check before assuming.
+
+---
 
 ## 🤖 Use Multiple Agents
 
 Leverage sub-agents for parallel execution:
 
-- Explore different parts of the system simultaneously  
-- One agent writes tests while another implements logic  
-- Delegate research (e.g., one reviews schema, another checks external API)  
+- Explore different parts of the system simultaneously
+- One agent writes tests while another implements logic
+- Delegate research (one reviews schema, another checks external API)
 - Refactors: one maps changes, another applies them
-
-> 🗣 Say: “I’ll split agents to cover different parts of this task.”
-
----
-
-## 🧠 Reality Checkpoints
-
-Stop and validate your progress at these key points:
-
-- After implementing a full feature  
-- Before starting a new component  
-- When something feels off  
-- Before declaring a task "done"  
-- On **any failed automated check**
-
----
-
-## ❌ Failing Checks = Hard Stop
-
-If any check fails:
-
-1. **STOP** all other work  
-2. **FIX** all reported issues  
-3. **VERIFY** the fix by rerunning the check  
-4. **RESUME** your original task  
-5. **NEVER IGNORE** the failure
 
 ---
 
 ## 🤔 On Task Conflicts or Gaps
 
-### When to Stop and Ask for Clarification
+### When to Stop and Ask
 
-**IMMEDIATELY pause and ask when encountering:**
+Immediately pause when encountering:
 
-1. **Conflicting Requirements**
-   - Multiple valid interpretations of the task
-   - Requirements that contradict each other
-   - Unclear acceptance criteria
-   > 🗣 Say: "I found conflicting requirements: [explain conflict]. Which approach would you prefer?"
+1. **Conflicting Requirements** — Multiple valid interpretations or contradictory requirements
+2. **Missing Critical Information** — Undefined business logic, missing API docs, unknown dependencies
+3. **Multiple Valid Solutions** — Different architectures or libraries with significant trade-offs
+4. **Scope Ambiguity** — Feature boundaries unclear, edge cases not specified
 
-2. **Missing Critical Information**
-   - Undefined business logic
-   - Missing API documentation
-   - Unclear data relationships
-   - Unknown external dependencies
-   > 🗣 Say: "I need clarification on [specific missing info] to proceed correctly."
+### How to Ask
 
-3. **Multiple Valid Solutions**
-   - Several architectures could work
-   - Different libraries solve the same problem
-   - Trade-offs between performance/simplicity/cost
-   > 🗣 Say: "I see [X] possible approaches: [list them]. Each has trade-offs: [explain]. Which aligns best with your priorities?"
-
-4. **Scope Ambiguity**
-   - Feature boundaries unclear
-   - "Nice to have" vs "must have" unclear
-   - Edge cases not specified
-   > 🗣 Say: "The scope isn't clear regarding [specific area]. Should I include [feature Y]?"
-
-### How to Ask for Clarification
-
-**Structure your questions to get actionable answers:**
-
-```
-❓ Current Understanding:
-"Based on the requirements, I understand that [summary]..."
-
-🤷 Uncertainty:
-"However, I'm unclear about [specific points]..."
-
-💡 Options:
-"I see these possible approaches:
-1. [Option A] - Pros: [...] Cons: [...]
-2. [Option B] - Pros: [...] Cons: [...]"
-
-🎯 Recommendation:
-"I lean toward [option] because [reasoning], but need your input."
-
-[Confidence: X.X]
-```
+Structure questions to get actionable answers:
+- State current understanding
+- Identify the specific uncertainty
+- Present 2-3 options with trade-offs
+- Give a recommendation with reasoning
 
 ### Red Flags That Require Immediate Clarification
 
-**STOP immediately when you notice:**
-- 🚨 Security implications not addressed
-- 🚨 Data privacy requirements missing  
-- 🚨 Performance requirements unspecified for data-heavy features
-- 🚨 Integration points with unknown systems
-- 🚨 Regulatory/compliance requirements unclear
-- 🚨 Cost implications of external services
+- Security implications not addressed
+- Data privacy requirements missing
+- Performance requirements unspecified for data-heavy features
+- Integration points with unknown systems
+- Regulatory/compliance requirements unclear
+- Cost implications of external services
 
-### Default Assumptions to AVOID
+### When NOT to Ask
 
-**Never assume:**
-- ❌ "The user probably wants the simplest solution"
-- ❌ "This edge case won't happen"
-- ❌ "Performance doesn't matter for this feature"
-- ❌ "We can add security later"
-- ❌ "The user knows about this technical limitation"
-- ❌ "This is similar to another project, so same rules apply"
-
-### When NOT to Ask (Proceed with Best Practices)
-
-**Use standard patterns without asking for:**
-- ✅ Code formatting and style (follow existing patterns)
-- ✅ Standard security practices (always implement)
-- ✅ Error handling (always include comprehensive handling)
-- ✅ Input validation (always validate)
-- ✅ TypeScript types (always add proper types)
-- ✅ Basic accessibility (always include)
-
-> 🗣 Say: "I'll implement this following standard best practices for [security/performance/accessibility]."
+Use standard patterns without asking for:
+- Code formatting and style (follow existing patterns)
+- Standard security practices (always implement)
+- Error handling (always include comprehensive handling)
+- Input validation (always validate)
+- TypeScript types (always add proper types)
+- Basic accessibility (always include)
 
 ---
 
-## 📋 User Action Tasks (IMPORTANT)
+## 📋 User Action Tasks
 
-**ALWAYS create User Action Tasks when you encounter:**
-- Tasks requiring manual user intervention
-- External service setup (API keys, accounts, credentials)
-- Deployment or production configurations
-- Tasks needing human approval or judgment
-- External system access you cannot reach
-- Manual verification steps
-- One-time setup procedures
+When a task requires manual user intervention that cannot be done programmatically, create a markdown file at `./docx/UserInstructions/[descriptive-name].md` (or an equivalent location if the project doesn't use `docx/`).
 
-### When to Create User Action Tasks
+**Create a User Action Task for:**
+- Environment variables / API keys / secrets
+- External service setup (Supabase, Stripe, OAuth providers)
+- Deployment steps (Vercel, AWS, DNS, SSL)
+- Manual verification or one-time setup procedures
 
-**MUST create a User Action Task for:**
-1. **Environment Variables**: When .env files need API keys or secrets
-2. **External Services**: Setting up Supabase, Stripe, Auth providers, etc.
-3. **Deployment**: Steps for Vercel, AWS, or other hosting platforms
-4. **Manual Testing**: Steps requiring human verification
-5. **Production Setup**: DNS, SSL, domain configuration
-6. **Account Creation**: Any service requiring user registration
-7. **Permission Grants**: OAuth apps, API access, etc.
+**Format:** Include overview, prerequisites checklist, numbered steps with code blocks, verification steps, and troubleshooting section.
 
-### Format Requirements
-
-1. **Location**: Save as `./docx/UserInstructions/[descriptive-name].md`
-2. **Structure**:
-   ```markdown
-   # User Action Required: [Task Title]
-   
-   ## Overview
-   [Brief description of what needs to be done and why]
-   
-   ## Prerequisites
-   - [ ] List any required accounts or tools
-   - [ ] Dependencies that must be in place first
-   
-   ## Steps
-   
-   ### 1. [First Major Step]
-   [Detailed instructions]
-   
-   ```bash
-   # Include any commands in code blocks
-   npm install something
-   ```
-   
-   ### 2. [Second Major Step]
-   [More instructions with screenshots if helpful]
-   
-   ## Verification
-   - [ ] How to verify the task was completed successfully
-   - [ ] Expected outcomes
-   
-   ## Troubleshooting
-   - Common issues and solutions
-   ```
-
-3. **Best Practices**:
-   - Use checkbox lists for multi-step processes
-   - Include exact commands in code blocks
-   - Provide example values (but never real secrets)
-   - Add verification steps
-   - Include troubleshooting section
-
-### Proactive Creation
-
-**IMPORTANT**: Don't wait for the user to ask! When you encounter any task you cannot complete programmatically:
-
-> 🗣 Say: "I've identified a task that requires your action. Let me create a User Action Task document for you."
-
-Then immediately create the file with detailed instructions.
-
-### Examples of User Action Tasks to Create
-
-- "Set up Supabase project and obtain API keys"
-- "Configure Vercel deployment with environment variables"
-- "Enable Google OAuth and obtain client credentials"
-- "Purchase and configure custom domain"
-- "Set up Stripe account for payment processing"
-- "Configure Cloudflare CDN settings"
-- "Manual data migration steps"
+Create the document proactively — don't wait for the user to ask.
 
 ---
 
-## 🖥️ Command Execution Guidelines
+## 🖥️ Command Execution
 
-### Before Running Any Command
+### Background Execution
 
-**ALWAYS consider these requirements:**
+For commands that take longer than 30 seconds and don't need to stay running, use the `run_in_background` parameter on the Bash tool. Use the Monitor tool to stream output from background processes.
 
-1. **Logging Requirements**
-   - If a command doesn't have built-in logging, redirect output to `./docx/logs/`
-   - Create timestamped log files for debugging later
-   - Example: `command > ./docx/logs/command-$(date +%Y%m%d-%H%M%S).log 2>&1`
+### Persistent Services
 
-2. **Long-Running Commands**
-   - For commands that may run longer than 30 seconds, ALWAYS use PM2
-   - PM2 provides better process management, logging, and monitoring
-   - Examples:
-     - Tests: `pm2 start npm --name "test-run" -- test`
-     - E2E tests: `pm2 start npm --name "e2e-tests" -- run test:e2e`
-     - Build: `pm2 start npm --name "build-process" -- run build`
-   - View logs: `pm2 logs [process-name]`
-   - Stop process: `pm2 stop [process-name]`
-   - Delete process: `pm2 delete [process-name]`
+For HTTP servers, workers, or daemons that must stay running — use PM2:
 
-3. **Server & Daemon Processes**
-   - For HTTP servers, gRPC servers, daemon processes, or any persistent services
-   - Always use process managers like PM2, forever, or systemd
-   - Document the management commands in User Action Tasks
-   - Examples:
-     - Web server: `pm2 start npm --name "api-server" -- start`
-     - Daemon/worker: `pm2 start worker.js --name "background-worker"`
-     - Watcher: `pm2 start watcher.js --name "file-watcher" --watch`
-     - One-time tasks (tests): `pm2 start npm --name "e2e-test-once" --no-autorestart -- run test:e2e`
-
-4. **Interactive Commands**
-   - If a command requires user input, STOP
-   - Create a User Action Task with clear instructions
-   - Tell the user: "This command requires manual input. Please run: [command]"
-   - Never attempt to automate interactive prompts
-
-### Command Execution Checklist
-
-**Before executing any command:**
-- [ ] Check if command outputs logs (if not, add logging)
-- [ ] Estimate execution time (if >30s, run in background)
-- [ ] Identify if it's a server process (use process manager)
-- [ ] Verify if it needs user input (create User Action Task)
-
-### Examples
-
-**Good - With Logging:**
 ```bash
-# Short command with logging (under 30s)
-npm test > ./docx/logs/test-$(date +%Y%m%d-%H%M%S).log 2>&1
-
-# Long-running commands with PM2 (over 30s)
-pm2 start npm --name "e2e-tests" --no-autorestart -- run test:e2e
-pm2 logs e2e-tests --lines 50 --nostream
-
-# Build process with PM2
-pm2 start npm --name "build-process" --no-autorestart -- run build
-pm2 logs build-process --nostream
-
-# View all PM2 processes
-pm2 list
-
-# Read logs without streaming (for completed processes)
-pm2 logs [process-name] --nostream
-```
-
-**Good - Server Management:**
-```bash
-# Using PM2 for Node.js server (persistent process)
 pm2 start npm --name "api-server" -- run start
 pm2 logs api-server --lines 50
-
-# Using PM2 for one-time tasks (no auto-restart)
-pm2 start npm --name "test-run" --no-autorestart -- test
-pm2 logs test-run --nostream
-
-# Using screen for development server
-screen -dmS dev-server npm run dev
-echo "Dev server running in screen session 'dev-server'"
+pm2 stop api-server
+pm2 delete api-server
 ```
 
-**Good - Handling Interactive Commands:**
-> 🗣 Say: "The database setup requires interactive input. Please run the following command manually: `npm run db:setup`"
+### Interactive Commands
 
-Then create `./docx/UserInstructions/database-setup.md` with detailed steps.
+If a command requires user input, create a User Action Task instead of attempting to automate it.
+
+### Logging
+
+If a command doesn't produce its own log output and the result matters for debugging, redirect to a timestamped file:
+
+```bash
+command > ./logs/command-$(date +%Y%m%d-%H%M%S).log 2>&1
+```
+
+### Token-Optimized CLI (RTK)
+
+Commands are automatically rewritten by the RTK hook for token efficiency. For RTK meta commands and troubleshooting:
+
+@RTK.md
