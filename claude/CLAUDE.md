@@ -64,6 +64,19 @@ During implementation, periodically:
 
 ---
 
+## ✅ Task Completion Rule
+
+**NEVER mark a task as `completed` without running verification in the same response.**
+
+Before calling `TaskUpdate status=completed`, you MUST:
+1. Run the relevant verification command (tests, type check, browser check, etc.)
+2. Show the passing output in the same response
+3. Only then call `TaskUpdate`
+
+Marking tasks complete during "cleanup" or "housekeeping" without evidence is forbidden. A pending task is only complete when the work is verified — not when the feature seems done.
+
+---
+
 ## ✅ Quality Gate
 
 **All automated checks must pass before proceeding.**
