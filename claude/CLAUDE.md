@@ -32,7 +32,7 @@ End every response with: `[Confidence: X.X]`
 
 ## 🔁 Workflow
 
-Always follow this sequence — **no skipping**: Research → Plan → Implement
+Work in this order: Research → Plan → Implement. Confirming the plan before building is what keeps rework down; for a one-line or read-only task, a sentence of plan is enough.
 
 1. **Research** — Understand the existing system, patterns, and dependencies
 2. **Plan** — Draft your solution and confirm it with me
@@ -44,7 +44,7 @@ For kisune projects, use `spec-driven-planning`, `brainstorming`, and `spec-driv
 
 During implementation, periodically:
 
-1. **Run existing tests** every 2-3 file changes — fix failures immediately before continuing
+1. **Run existing tests** after each meaningful change — fix failures immediately before continuing
 2. **Write tests BEFORE implementing** — strict TDD; no production code without a failing test first
 3. **Commit** after each logical unit of work — one-line message, imperative mood, stage specific files (not `git add .`)
 
@@ -68,10 +68,10 @@ During implementation, periodically:
 
 **NEVER mark a task as `completed` without running verification in the same response.**
 
-Before calling `TaskUpdate status=completed`, you MUST:
+Before marking any task completed in a task tracker, you MUST:
 1. Run the relevant verification command (tests, type check, browser check, etc.)
 2. Show the passing output in the same response
-3. Only then call `TaskUpdate`
+3. Only then mark it completed
 
 Marking tasks complete during "cleanup" or "housekeeping" without evidence is forbidden. A pending task is only complete when the work is verified — not when the feature seems done.
 
@@ -85,11 +85,11 @@ Marking tasks complete during "cleanup" or "housekeeping" without evidence is fo
 - [ ] No linter violations
 - [ ] No runtime/config errors
 - [ ] No type errors
-- [ ] No test failures
+- [ ] No unexpected test failures (the deliberately failing new test in TDD's red step is expected)
 
 **If any check fails:** STOP all other work → FIX the issue → VERIFY by rerunning → RESUME. Never ignore failures.
 
-Run format, test, and lint commands frequently.
+Run format, test, and lint after each meaningful change, and once more before declaring done.
 
 ---
 
@@ -106,12 +106,7 @@ Not all projects use this structure — check before assuming.
 
 ## 🤖 Use Multiple Agents
 
-Leverage sub-agents for parallel execution:
-
-- Explore different parts of the system simultaneously
-- One agent writes tests while another implements logic
-- Delegate research (one reviews schema, another checks external API)
-- Refactors: one maps changes, another applies them
+Delegate independent, parallelizable work to sub-agents (broad exploration, research across separate subsystems or APIs, refactors where one agent maps and another applies). Do small or tightly coupled tasks directly.
 
 ---
 
@@ -119,7 +114,7 @@ Leverage sub-agents for parallel execution:
 
 ### When to Stop and Ask
 
-Immediately pause when encountering:
+Pause for decisions that are mine to make; for anything else, pick a sensible default and state it:
 
 1. **Conflicting Requirements** — Multiple valid interpretations or contradictory requirements
 2. **Missing Critical Information** — Undefined business logic, missing API docs, unknown dependencies
@@ -145,13 +140,7 @@ Structure questions to get actionable answers:
 
 ### When NOT to Ask
 
-Use standard patterns without asking for:
-- Code formatting and style (follow existing patterns)
-- Standard security practices (always implement)
-- Error handling (always include comprehensive handling)
-- Input validation (always validate)
-- TypeScript types (always add proper types)
-- Basic accessibility (always include)
+Follow the project's existing conventions without asking: formatting and style, error handling, input validation, security practices. Language- or stack-specific rules (types, accessibility) belong in the project's own CLAUDE.md.
 
 ---
 
@@ -172,10 +161,6 @@ Create the document proactively — don't wait for the user to ask.
 ---
 
 ## 🖥️ Command Execution
-
-### Background Execution
-
-For commands that take longer than 30 seconds and don't need to stay running, use the `run_in_background` parameter on the Bash tool. Use the Monitor tool to stream output from background processes.
 
 ### Persistent Services
 
