@@ -3,19 +3,16 @@ if test ! "$(uname)" = "Darwin"; then
   exit 0
 fi
 
-echo "Installing NPM"
+echo "Installing Node via fnm"
 
-# if ! is-executable brew -o ! is-executable git; then
-#   echo "Skipped: npm (missing: brew and/or git)"
-#   return
-# fi
+if ! command -v fnm >/dev/null; then
+  echo "Skipped: node (missing: fnm, run brew bundle)"
+  exit 0
+fi
 
-export DOTFILES_BREW_PREFIX_NVM=$(brew --prefix nvm)
-# set-config "DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_CACHE"
+eval "$(fnm env --shell bash)"
 
-. "$DOTFILES_ROOT/node/.nvm"
-
-nvm install node && nvm alias default node
+fnm install --lts && fnm default lts-latest
 
 # Globally install with npm
 
