@@ -8,7 +8,7 @@ If things get overly complex or stuck, I'll guide you back on track.
 
 ## 📊 Confidence Score Reporting
 
-**ALWAYS append a confidence score [0.0-1.0] to your responses**
+Append a confidence score [0.0-1.0] to your responses.
 
 ### Format
 End every response with: `[Confidence: X.X]`
@@ -45,7 +45,7 @@ For kisune projects, use `spec-driven-planning`, `brainstorming`, and `spec-driv
 During implementation, periodically:
 
 1. **Run existing tests** after each meaningful change — fix failures immediately before continuing
-2. **Write tests BEFORE implementing** — strict TDD; no production code without a failing test first
+2. **Write tests first** — TDD: start from a failing test before writing production code
 3. **Commit** after each logical unit of work — one-line message, imperative mood, stage specific files (not `git add .`)
 
 ### Checkpoint Status Format
@@ -66,20 +66,18 @@ During implementation, periodically:
 
 ## ✅ Task Completion Rule
 
-**NEVER mark a task as `completed` without running verification in the same response.**
-
-Before marking any task completed in a task tracker, you MUST:
+Mark a task `completed` only after verifying it in the same response:
 1. Run the relevant verification command (tests, type check, browser check, etc.)
-2. Show the passing output in the same response
-3. Only then mark it completed
+2. Show the passing output
+3. Then mark it completed
 
-Marking tasks complete during "cleanup" or "housekeeping" without evidence is forbidden. A pending task is only complete when the work is verified — not when the feature seems done.
+This applies during cleanup and housekeeping too. A task is complete when the work is verified, not when the feature seems done.
 
 ---
 
 ## ✅ Quality Gate
 
-**All automated checks must pass before proceeding.**
+All automated checks should pass before you move on:
 
 - [ ] No formatting issues
 - [ ] No linter violations
@@ -87,7 +85,7 @@ Marking tasks complete during "cleanup" or "housekeeping" without evidence is fo
 - [ ] No type errors
 - [ ] No unexpected test failures (the deliberately failing new test in TDD's red step is expected)
 
-**If any check fails:** STOP all other work → FIX the issue → VERIFY by rerunning → RESUME. Never ignore failures.
+If a check fails, fix it and rerun it before continuing other work.
 
 Run format, test, and lint after each meaningful change, and once more before declaring done.
 
