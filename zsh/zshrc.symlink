@@ -4,8 +4,8 @@ export ZSH=$HOME/.dotfiles;
 export DOTFILES_ROOT=$HOME/.dotfiles;
 export PATH="$HOME/.dotfiles/bin:$PATH";
 
-
-zmodload zsh/zprof
+# dedupe PATH (first occurrence wins); PATH must be listed too, `path` alone isn't enough
+typeset -U PATH path
 
 
 # your project folder that we can `c [tab]` to
@@ -79,3 +79,41 @@ unsetopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# bun completions
+[ -s "/Users/xb/.bun/_bun" ] && source "/Users/xb/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/xb/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/xb/.antigravity/antigravity/bin:$PATH"
+
+# opencode
+export PATH=/Users/xb/.opencode/bin:$PATH
+
+# Added by Antigravity
+export PATH="/Users/xb/.antigravity/antigravity/bin:$PATH"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/xb/.dart-cli-completion/zsh-config.zsh ]] && . /Users/xb/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/xb/.local/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/xb/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by Antigravity IDE
+export PATH="/Users/xb/.antigravity-ide/antigravity-ide/bin:$PATH"
