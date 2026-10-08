@@ -46,7 +46,7 @@ During implementation, periodically:
 
 1. **Run existing tests** after each meaningful change — fix failures immediately before continuing
 2. **Write tests first** — TDD: start from a failing test before writing production code
-3. **Commit** after each logical unit of work — one-line message, imperative mood, stage specific files (not `git add .`)
+3. **Commit** when I ask — one commit per logical unit of work, one-line message, imperative mood, stage specific files (not `git add .`)
 
 ### Checkpoint Status Format
 
@@ -87,7 +87,7 @@ All automated checks should pass before you move on:
 
 If a check fails, fix it and rerun it before continuing other work.
 
-Run format, test, and lint after each meaningful change, and once more before declaring done.
+Run format, test, and lint after each meaningful change, and once more before declaring done. Skip checks a project doesn't have, and say which you skipped.
 
 ---
 
@@ -173,7 +173,7 @@ pm2 delete api-server
 
 ### Interactive Commands
 
-If a command requires user input, create a User Action Task instead of attempting to automate it.
+If a single command requires my input (e.g. `gh auth login`), ask me to run it with `! <command>` instead of automating it. Use a User Action Task for multi-step manual setup.
 
 ### Logging
 
