@@ -23,6 +23,7 @@ packages=(
   mdx-deck
   nodemon
   npm
+  pm2
   release-it
   spot
   svgo
