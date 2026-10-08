@@ -1,6 +1,10 @@
 alias py=python
-alias pi=pip
-alias pe=pipenv
-alias pipuninstall="pip uninstall -y -r <(pip freeze)"
 
-alias poe=poetry
+# uv
+alias uvi="uv init"
+alias uva="uv add"
+alias uvr="uv run"
+alias uvs="uv sync"
+alias uvl="uv lock"
+alias uvp="uv pip"
+alias uvv="uv venv"
